@@ -9,6 +9,7 @@ class News extends Component{
     super(props);
     this.state = {
       newsActually : [ ],
+      rotation: 0
       };
   }
     addNewsActually = (aNewsA) => {
@@ -26,13 +27,24 @@ class News extends Component{
       newsActually: newsActually
     })
    }
-    rotateImage = (id) => {
-      let newsActually = this.state.newsActually.filter(aNewsA => {
-        return aNewsA.id !== id
-      });
+    rotateRight = (rotation) => {
+      let newRotation = this.state.rotation + 60;
+      if(newRotation >= 360){
+        newRotation =- 360;
+      }
       this.setState({
-        newsActually: newsActually
+        rotation: newRotation,
       })
+    }
+    rotateLeft = (rotation) => {
+      let newRotation = this.state.rotation - 60;
+      if(newRotation >= 360){
+        newRotation =- 360;
+      }
+      this.setState({
+        rotation: newRotation,
+      })
+      return newRotation !== rotation
     }
 
   render() {
@@ -42,10 +54,11 @@ class News extends Component{
                 <NewsActually 
                   deleteNewsActually={this.deleteNewsActually}
                   newsActually={this.state.newsActually}
+                  rotateRight={this.state.rotateRight}
+                  rotateLeft={this.state.rotateLeft}
                 />
             </div>
               <AddNews addNewsActually={this.addNewsActually} />
-              
         </div>
     )
   }

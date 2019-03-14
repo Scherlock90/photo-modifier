@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RotateComponent from '../ImageComponents/RotateComponent';
+import ImageUpload from '../ImageComponents/ImageUpload';
 
 class NewsActually extends Component{
     constructor(props){
@@ -7,6 +7,7 @@ class NewsActually extends Component{
         this.state = {
         }
     }
+
     render(){
         const styleImage = {
             width: '100%',
@@ -17,20 +18,21 @@ class NewsActually extends Component{
           }
 
         console.log(this.props);
-        const { newsActually, deleteNewsActually } = this.props;
+        const { newsActually, deleteNewsActually, rotateLeft, rotateRight} = this.props;
         const newsActuallyList = newsActually.map( newsAct => {
             return (
         <div className="rowFestival"  key={newsAct.id}>
             <div id="festSection1" onClick={this.props.onClick}>
                 <div id="f1" className="columnFestival  imagecolumnFestival">
-                    <img style={styleImage} src={newsAct.imageField} />  
+                    <img style={{transform: `rotate(${newsAct.rotation}deg)`}} src={newsAct.imageField} />  
                 </div>
                 <div id="f2" className="columnFestival  textColumn">
                     <p className="secondSeqTable"> {newsAct.name } </p>
                     <p className="secondSeqTable"> {newsAct.textField}</p>
                     <p className="secondSeqTableDescirption">{this.props.descriptionTable1}</p>
                     <button onClick={() => {deleteNewsActually(newsAct.id)}}>Usuń aktualność</button>
-                    <RotateComponent />
+                    <button onClick={() => {rotateLeft(newsAct.rotation)}}>rotateLeft</button>
+                    <button onClick={() => {rotateRight(newsAct.rotation)}}>rotateRight</button>
                 </div>
             </div>
         </div>

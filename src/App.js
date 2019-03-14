@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import News from './NewsComponents/News';
+import ImageUpload from './ImageComponents/ImageUpload';
 
 const styleTitle = {
   fontSize: '42px'
@@ -22,7 +23,7 @@ class App extends Component {
           </div>
           
           <div>
-            ssss
+            <ImageUpload />
           </div>
         </header>
       </div>
