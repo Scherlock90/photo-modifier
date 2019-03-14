@@ -46,7 +46,8 @@ const ImageSlider = ({ value, max, onChange, children }) => (
     rotate(){
       let newRotation = this.state.rotation + 60;
       if(newRotation >= 360){
-        newRotation = 0;
+        newRotation = 360;
+        // newRotation = 0;
       }
       this.setState({
         rotation: newRotation,
@@ -55,7 +56,7 @@ const ImageSlider = ({ value, max, onChange, children }) => (
     
     rotateleft(){
       let newRotation = this.state.rotation - 60;
-      if(newRotation <= -360){
+      if(newRotation <= 0){
         newRotation = 0;
       }
       this.setState({

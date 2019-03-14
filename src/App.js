@@ -3,12 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import ImageUpload from './ImageComponents/ImageUpload';
 
-const styleTitle = {
-  fontSize: '42px'
-}
 class App extends Component {
-  
   render() {
+    const styleTitle = {
+      fontSize: '42px'
+    }
     const containerImage = {
       height: '300px',
       width: '500px'
@@ -22,7 +21,6 @@ class App extends Component {
           <div>
             <img src={logo} className="App-logo" alt="logo" />
           </div>
-          
           <div style={containerImage}>
             <ImageUpload />
           </div>
