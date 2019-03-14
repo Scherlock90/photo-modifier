@@ -1,0 +1,11 @@
+.table{
+    width: 800px;
+   	margin: auto;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+.table td {
+    vertical-align: middle;
+    text-align: left;
+    max-width: 500px;
+ }

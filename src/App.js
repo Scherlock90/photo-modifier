@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import News from './NewsComponents/News';
 import ImageUpload from './ImageComponents/ImageUpload';
 
 const styleTitle = {
   fontSize: '42px'
 }
 class App extends Component {
+  
   render() {
+    const containerImage = {
+      height: '300px',
+      width: '500px'
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -18,11 +22,8 @@ class App extends Component {
           <div>
             <img src={logo} className="App-logo" alt="logo" />
           </div>
-          <div>
-            <News />
-          </div>
           
-          <div>
+          <div style={containerImage}>
             <ImageUpload />
           </div>
         </header>
