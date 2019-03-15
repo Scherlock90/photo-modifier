@@ -5,7 +5,22 @@ import './imageUpload.css';
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/lab/Slider";
 
-
+const ImagePixels = ({ value }) => (
+	<>
+		<Typography>
+			Width: {value.w}
+			px
+		</Typography>
+		<Typography>
+			Height: {value.h}
+			px
+		</Typography>
+		<Typography>
+			Size: {value.size}
+			px
+		</Typography>
+	</>
+);
 
 const ImageSlider = ({ value, max, onChange, children }) => (
 	<>
@@ -33,10 +48,10 @@ const ImageSlider = ({ value, max, onChange, children }) => (
           h: 0,
           size: 0
        },
-       prevSize: [0, 0],
-         grayscale: 0,
-         invert:0,
-         huerotate:0,
+        prevSize: [0, 0],
+        grayscale: 0,
+        invert:0,
+        huerotate:0,
       }
       
       this.rotate = this.rotate.bind(this);
@@ -63,10 +78,15 @@ const ImageSlider = ({ value, max, onChange, children }) => (
         rotation: newRotation,
       })
     }
-  //   handleRotate = (rotation) => {
-  //     const pixels = this.handlePixels(rotation);
-  //     this.setState({ rotation, pixels });
-  //  };
+    handleRotate = (e, rotation) => {
+      this.setState({ rotation });
+   };
+  handleInvert = (e, invert) => {
+    this.setState({ invert });
+ };
+  handleGrayscale = (e, grayscale) => {
+  this.setState({ grayscale });
+};
     
     render(){
       const containerImage = {
@@ -79,10 +99,10 @@ const ImageSlider = ({ value, max, onChange, children }) => (
           <tr>
             <td>
               <Grid container spacing={40}>
-                <Grid item xs>            
+                <Grid item xs>
                   <input onClick={this.rotateleft} type="button" value="left" />
                     <img style={{transform: `rotate(${rotation}deg)`, height: '200px'}} src={this.props.src} width="400" />
-                  <input onClick={this.rotate} type="button" value="right" />
+                  <input onClick={this.rotate} type="button" value="right" />                 
                 </Grid>
               </Grid>
             </td>
@@ -93,8 +113,23 @@ const ImageSlider = ({ value, max, onChange, children }) => (
                       max={360}
                       value={this.state.rotation}
                       onChange={this.handleRotate}
-                  /> 
-                  Rotation: {this.state.rotation}
+                  > Rotation: {this.state.rotation}
+                  </ImageSlider> 
+                  
+                  <ImageSlider
+                      max={100}
+                      value={this.state.invert}
+                      onChange={this.handleInvert}
+                  >
+                      Invert {this.state.invert}%
+                  </ImageSlider>
+                  <ImageSlider
+                      max={100}
+                      value={this.state.grayscale}
+                      onChange={this.handleGrayscale}
+                  >
+                      Grayscale {this.state.grayscale}%
+                  </ImageSlider>
                 </Grid> 
               </Grid> 
             </td>
@@ -128,7 +163,7 @@ const ImageSlider = ({ value, max, onChange, children }) => (
 
     render() {
       const imageSize2 = {
-        height: '300px'
+        padding: '2em'
       }
       let {imagePreviewUrl} = this.state;
       let $imagePreview = null;
@@ -140,13 +175,19 @@ const ImageSlider = ({ value, max, onChange, children }) => (
   
       return (
         <div className="previewComponent">
-          <form onSubmit={(e)=>this._handleSubmit(e)}>
-            <input className="fileInput" 
-              type="file" 
-              onChange={(e)=>this._handleImageChange(e)} />
+          <form style={imageSize2} onSubmit={(e)=>this._handleSubmit(e)}>
+                  <input className="fileInput" 
+                    type="file" 
+                    onChange={(e)=>this._handleImageChange(e)} />
           </form>
-          <div className="imgPreview">
-            {$imagePreview}
+          <div className="table">
+            <tr>
+              <td>
+                <div className="imgPreview">
+                  {$imagePreview}
+                </div>
+              </td>
+            </tr>
           </div>
         </div>
       )

@@ -9,8 +9,13 @@ class App extends Component {
       fontSize: '42px'
     }
     const containerImage = {
-      height: '300px',
-      width: '500px'
+      backgroundColor: '#282c34',
+      color: 'white',
+      minHeight: '100vh'
+    }
+    const sizeImage = {
+      height: '130px',
+      width: '130px'
     }
     return (
       <div className="App">
@@ -19,12 +24,12 @@ class App extends Component {
             <p>React Photo-Modifier</p>
           </div>
           <div>
-            <img src={logo} className="App-logo" alt="logo" />
-          </div>
-          <div style={containerImage}>
-            <ImageUpload />
+            <img src={logo} style={sizeImage} className="App-logo" alt="logo" />
           </div>
         </header>
+        <div style={containerImage} >
+            <ImageUpload />
+        </div>
       </div>
     );
   }
