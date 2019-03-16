@@ -53,12 +53,9 @@ const ImageSlider = ({ value, max, onChange, children }) => (
         invert:0,
         huerotate:0,
       }
-      
-      this.rotate = this.rotate.bind(this);
-      this.rotateleft = this.rotateleft.bind(this);
     }
     
-    rotate(){
+    rotate = () =>{
       let newRotation = this.state.rotation + 60;
       if(newRotation >= 360){
         newRotation = 360;
@@ -69,7 +66,7 @@ const ImageSlider = ({ value, max, onChange, children }) => (
       })
     }
     
-    rotateleft(){
+    rotateleft = () => {
       let newRotation = this.state.rotation - 60;
       if(newRotation <= 0){
         newRotation = 0;
@@ -78,12 +75,12 @@ const ImageSlider = ({ value, max, onChange, children }) => (
         rotation: newRotation,
       })
     }
-    handleRotate = (e, rotation) => {
-      this.setState({ rotation });
-   };
-  handleInvert = (e, invert) => {
-    this.setState({ invert });
- };
+handleRotate = (e, rotation) => {
+  this.setState({ rotation });
+};
+handleInvert = (e, invert) => {
+  this.setState({ invert });
+};
   handleGrayscale = (e, grayscale) => {
   this.setState({ grayscale });
 };
