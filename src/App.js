@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ImageUpload from './ImageComponents/ImageUpload';
+import ImageEditor from './ImageComponents/ImageEditor';
 
 class App extends Component {
   render() {
@@ -19,16 +20,8 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <header className="App-header">
-          <div style={styleTitle}>
-            <p>React Photo-Modifier</p>
-          </div>
-          <div>
-            <img src={logo} style={sizeImage} className="App-logo" alt="logo" />
-          </div>
-        </header>
-        <div style={containerImage} >
-            <ImageUpload />
+        <div>
+            <ImageEditor />
         </div>
       </div>
     );

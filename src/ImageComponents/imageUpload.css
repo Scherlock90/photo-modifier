@@ -1,5 +1,5 @@
 .table{
-    width: 680px;
+    width: 800px;
    	margin: auto;
     font-size: 14px;
     border-collapse: collapse;
@@ -16,4 +16,5 @@
  }
  .MuiTypography-body1-107{
      color : white !important;
+     margin: 20px !important;
  }

@@ -52,9 +52,9 @@ const ImageSlider = ({ value, max, onChange, children }) => (
         grayscale: 0,
         invert:0,
         huerotate:0,
+        color: "ROSYBROWN"
       }
     }
-    
     rotate = () =>{
       let newRotation = this.state.rotation + 60;
       if(newRotation >= 360){
@@ -65,7 +65,7 @@ const ImageSlider = ({ value, max, onChange, children }) => (
         rotation: newRotation,
       })
     }
-    
+
     rotateleft = () => {
       let newRotation = this.state.rotation - 60;
       if(newRotation <= 0){
@@ -84,6 +84,49 @@ handleInvert = (e, invert) => {
   handleGrayscale = (e, grayscale) => {
   this.setState({ grayscale });
 };
+handleHuerotate = (e, huerotate) => {
+  this.setState({ huerotate });
+};
+handleCanvas = (canvasRef, fullsize) => {
+  const { prevSize, angle, grayscale, invert, huerotate } = this.state;
+  let size = prevSize;
+  if (fullsize) {
+     size = this.props.img.imgSize;
+     // console.log("__canvas handle fullsize");
+  } else {
+     // console.log("__canvas handle");
+  }
+
+  const canvas = canvasRef.current;
+  const myImage = this.props.imgRef.current;
+  const ctx = canvas.getContext("2d");
+
+  ctx.save(); //saves the state of canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.rotate((angle * Math.PI) / 180);
+  ctx.filter = `grayscale(${grayscale}%) invert(${invert}%) hue-rotate(${huerotate}deg)`;
+  // ctx.filter = `invert(${invert}%)`;
+  ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
+  ctx.drawImage(
+     myImage,
+     (canvas.width - size[0]) / 2,
+     (canvas.height - size[1]) / 2,
+     size[0],
+     size[1]
+  );
+  ctx.restore();
+};
+
+makeGray = (e, pixel) => {
+  //change all pixels of image to gray
+    var avg = (pixel.getRed()+pixel.getGreen()+pixel.getBlue())/3;
+    pixel.setRed(avg);
+    pixel.setGreen(avg);
+    pixel.setBlue(avg);
+  //display new image
+  var canvas = document.getElementById("img");
+}
     
     render(){
       const containerImage = {
@@ -99,7 +142,7 @@ handleInvert = (e, invert) => {
                 <Grid item xs>
                   <input onClick={this.rotateleft} type="button" value="left" />
                     <img style={{transform: `rotate(${rotation}deg)`, height: '200px'}} src={this.props.src} width="400" />
-                  <input onClick={this.rotate} type="button" value="right" />                 
+                  <input onClick={this.rotate} type="button" value="right" />            
                 </Grid>
               </Grid>
             </td>
@@ -123,10 +166,18 @@ handleInvert = (e, invert) => {
                   <ImageSlider
                       max={100}
                       value={this.state.grayscale}
-                      onChange={this.handleGrayscale}
+                      onChange={this.handleGrayscale }
                   >
                       Grayscale {this.state.grayscale}%
                   </ImageSlider>
+                  <ImageSlider
+                      max={360}
+                      value={this.state.huerotate}
+                      onChange={this.handleHuerotate}
+                  >
+                      Hue-rotate {this.state.huerotate}deg
+                  </ImageSlider>
+                  <input type="button" value="Make Grayscale" onclick="makeGray()" />
                 </Grid> 
               </Grid> 
             </td>
