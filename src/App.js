@@ -20,7 +20,16 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <div>
+        {/* <header className="App-header">
+          <div style={styleTitle}>
+            <p>React Photo-Modifier</p>
+          </div>
+          <div>
+            <img src={logo} style={sizeImage} className="App-logo" alt="logo" />
+          </div>
+        </header> */}
+        <div  >
+            {/* <ImageUpload /> */}
             <ImageEditor />
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 
 const data = {
-    image : 'https://www.w3schools.com/w3images/sound.jpg',
     settings:[
       {
           name: 'contrast',
@@ -131,6 +130,8 @@ const data = {
     constructor(props){
       super(props);
       this.state = {
+        name: '',
+        imageField: '',
         rotation: 0
       }
     }
@@ -154,6 +155,20 @@ const data = {
         rotation: newRotation,
       })
     }
+    handleChange = (e) => {
+            this.setState({
+              [e.target.id]: e.target.value  
+            })
+        }
+//image Upload elements
+        fileChangedHandler = (event) => {
+            event.preventDefault();
+            this.setState({imageField: URL.createObjectURL(event.target.files[0])
+            })
+          }
+          uploadHandler = () => { 
+            console.log(this.state.imageField)
+          }
     render(){
       const { rotation } =  this.state;
       const imgStyle = {
@@ -163,13 +178,32 @@ const data = {
         backgroundImage:`url(${this.props.url})`
       }
       const imgStyle2 = {
-        transform: `rotate(${rotation}deg)`
+        maxWidth: '15%',
+        maxHeight: '90%',
+        padding: '1em',
+        
+      }
+      const imgStyle3 = {
+        maxWidth: '85%',
+        maxHeight: '90%'
+      }
+      const imageContainerUpload = {
+          width: '800px',
+          height: '800px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
       }
       return(
         <div className="imageContainer">
-          {/* <input onClick={this.rotateleft} type="button" value="left" /> */}
-            <img className="guitar" style={imgStyle}  /> 
-          {/* <input onClick={this.rotate} type="button" value="right" />   */}
+          <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
+            <div style={imgStyle3}>
+              <img src={this.state.imageField} className="guitar" style={imgStyle}/>
+            </div>
+            <div style={imgStyle2}>
+              <input type="file" id="imageField" onChange={this.fileChangedHandler} />
+            </div>                  
+          </form>
         </div>
       )
     }

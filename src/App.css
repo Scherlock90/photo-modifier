@@ -32,8 +32,6 @@
   }
 }
 
-
-
 #root{
       font-family: "Lato";
     display: flex;
@@ -53,8 +51,8 @@
 }
 
 .guitar{
-    height: 90%;
-    width: 90%;
+    height: 400px;
+    width: 400px;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
