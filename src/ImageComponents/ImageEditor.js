@@ -132,7 +132,8 @@ const data = {
       this.state = {
         name: '',
         imageField: '',
-        rotation: 0
+        rotation: 0,
+        width: 0
       }
     }
     rotate = () =>{
@@ -145,37 +146,19 @@ const data = {
         rotation: newRotation,
       })
     }
-
-    rotateleft = () => {
-      let newRotation = this.state.rotation - 60;
-      if(newRotation <= 0){
-        newRotation = 0;
-      }
-      this.setState({
-        rotation: newRotation,
+//image Upload elements
+  fileChangedHandler = (event) => {
+      event.preventDefault();
+      this.setState({imageField: URL.createObjectURL(event.target.files[0]),
+        width: 'ttt'
       })
     }
-    handleChange = (e) => {
-            this.setState({
-              [e.target.id]: e.target.value  
-            })
-        }
-//image Upload elements
-        fileChangedHandler = (event) => {
-            event.preventDefault();
-            this.setState({imageField: URL.createObjectURL(event.target.files[0])
-            })
-          }
-          uploadHandler = () => { 
-            console.log(this.state.imageField)
-          }
     render(){
       const { rotation } =  this.state;
       const imgStyle = {
         transform: `rotate(${this.props.settings[6].value}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
         invert(${this.props.settings[5].value})`,
-        backgroundImage:`url(${this.props.url})`
       }
       const imgStyle2 = {
         maxWidth: '15%',
@@ -202,6 +185,7 @@ const data = {
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileChangedHandler} />
+              Wysokość : {this.state.width}
             </div>                  
           </form>
         </div>
