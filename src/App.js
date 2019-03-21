@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ImageUpload from './ImageComponents/ImageUpload';
 import ImageEditor from './ImageComponents/ImageEditor';
 
 class App extends Component {

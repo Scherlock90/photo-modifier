@@ -1,5 +1,4 @@
 import React from 'react';
- import { calcCropRec, calcPrevImgSize } from "./imageCanvasUtils";
 
 const data = {
     settings:[
@@ -156,7 +155,6 @@ const data = {
     constructor(props){
       super(props);
       this.state = {
-        name: '',
         imageField: '',
         rotation: 0,
         width: 0,
@@ -164,19 +162,22 @@ const data = {
         pixels: {
             w: 0,
             h: 0,
-         }
-         , 
-         x: 0, y: 0
+         }, 
+         x: 0,
+         y: 0
       }
     }
     _onMouseMove = (e) => {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
-  onBoundsElement = (e, elt) => {
+  onBoundsElement = (e) => {
     let guitarBounds = document.querySelector('.guitar');
-    let guitarContainer = document.querySelector('.containerGuitar');
-      let bounds = guitarBounds.getBoundingClientRect();
-      console.log(' its working ' + bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
+    let bounds = guitarBounds.getBoundingClientRect();
+    console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
+    this.setState({
+      width: bounds.width,
+      height: bounds.height
+    })
   }
     onImgLoad = ({ target: img }) => {
     this.setState({
@@ -185,44 +186,12 @@ const data = {
     });
   };
     componentDidMount () {
-      {/* let canvas = document.getElementById('canvas');
-      console.log(canvas.width); */}
-        {/* console.log(this.myInput.current.offsetWidth); */}
         this.onBoundsElement();
         const pixels = this.handlePixels();
         this.setState({
          pixels
       });
-      }
-
-  convertImageToCanvas = (image) => {
-	var canvas = document.createElement("canvas");
-	canvas.width = image.width;
-	canvas.height = image.height;
-	canvas.getContext("2d").drawImage(image, 0, 0);
-
-	return canvas;
-}
-      positionImage = (e) => {
-    const img = this.refs.masterImg
-    const rect = img.getBoundingClientRect();
-    let x = rect.left;
-    let y = rect.top;
-    let w = rect.width;
-    let h = rect.height;
-    this.setState({
-      width: w,
-      height: h
-    })
-  }
-      relativePosition = (e) => {
-    const img = this.refs.masterImg
-    const rect = img.getBoundingClientRect()
-    return [
-      (e.clientX - rect.left) / rect.width,
-      (e.clientY - rect.top) / rect.height,
-    ].map(num => Math.max(0, Math.min(num, 1)))
-  }
+      }     
 
       handlePixels = (w, h) => {
       const { img } = this.props;
@@ -239,23 +208,19 @@ const data = {
       let newRotation = this.state.rotation + 60;
       if(newRotation >= 360){
         newRotation = 360;
-        // newRotation = 0;
       }
       this.setState({
         rotation: newRotation,
       })
     }
     rotateleft = (e) => {
-      let newRotation = this.state.rotation - 60;
-      {/* let newOnLoad = this.onImgLoad; */}
-      
+      let newRotation = this.state.rotation - 60;      
       if(newRotation <= -360){
         newRotation = -360;
       }
       this.setState({
         rotation: newRotation,
       })
-      
     }
     
 //image Upload elements
@@ -266,14 +231,12 @@ const data = {
     }
     render(){
       let { rotation, width, height, x, y } =  this.state;
-      console.log(width);
       const imgStyle = {
         style: `width(${this.props.settings[7].value}px)`,
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
         invert(${this.props.settings[5].value})`,
       }
-      {/* width: `width(${this.props.settings[7].value}px) `, */}
       const imgStyle2 = {
         maxWidth: '15%',
         maxHeight: '90%',
@@ -297,25 +260,22 @@ const data = {
           <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
             <div className='containerGuitar' style={imgStyle3}>
               <input onClick={this.rotateleft} type="button" value="Lewo" />
-              {/* <canvas> */}
                 <img id="ing" 
                   src={this.state.imageField}
                   className="guitar" 
                   style={imgStyle}
                   width={width} height={height}
                   onClick={this.onBoundsElement}
-                  
+                  onMouseMove={this._onMouseMove}
                   onLoad={this.onImgLoad} />
-              {/* </canvas> */}
               <input onClick={this.rotate} type="button" value="Prawo" />
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileChangedHandler} />
               <p>Szerokość: {width} </p>
               <p>Wysokość: {height} </p>
-              <p>{ x } { y }</p>
+              <p>Szerokość w obrazie: { x } Wyskoość w obrazie: { y }</p>
               <ImagePixels value={this.state.pixels} />
-              {console.log(this.state.pixels)}
             </div>                  
           </form>
         </div>
