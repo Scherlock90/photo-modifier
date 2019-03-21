@@ -186,12 +186,12 @@ const data = {
     });
   };
     componentDidMount () {
-        this.onBoundsElement();
-        const pixels = this.handlePixels();
+      this.onBoundsElement();
         this.setState({
-         pixels
+         width: this.props.width,
+         height: this.props.height
       });
-      }     
+    }   
 
       handlePixels = (w, h) => {
       const { img } = this.props;
@@ -210,7 +210,7 @@ const data = {
         newRotation = 360;
       }
       this.setState({
-        rotation: newRotation,
+        rotation: newRotation
       })
     }
     rotateleft = (e) => {
@@ -275,7 +275,6 @@ const data = {
               <p>Szerokość: {width} </p>
               <p>Wysokość: {height} </p>
               <p>Szerokość w obrazie: { x } Wyskoość w obrazie: { y }</p>
-              <ImagePixels value={this.state.pixels} />
             </div>                  
           </form>
         </div>
