@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ImageEditor from './ImageComponents/ImageEditor';
 
 class App extends Component {
   render() {
     const styleTitle = {
-      fontSize: '42px'
+      fontSize: '42px',
     }
     const containerImage = {
       backgroundColor: '#282c34',
