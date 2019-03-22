@@ -222,7 +222,7 @@ const data = {
         textAlign: 'left'
       }
       const imgStyle3 = {
-        padding: '2em',
+        padding: '3em',
         maxWidth: '85%',
         maxHeight: '90%'
       }
@@ -240,19 +240,23 @@ const data = {
         <div className="imageContainer">
           <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
             <div className='containerGuitar' style={imgStyle3}>
-              <input onClick={this.rotateleft} type="button" value="Lewo" />
+              <div style={imgStyle3}>
                 <img id="ing" 
-                  src={this.state.imageField}
-                  className="guitar" 
-                  style={imgStyle}
-                  onClick={this.onBoundsElement}
-                  onMouseMove={this._onMouseMove}
-                  onLoad={this.onImgLoad} 
+                    src={this.state.imageField}
+                    className="guitar" 
+                    style={imgStyle}
+                    onClick={this.onBoundsElement}
+                    onMouseMove={this._onMouseMove}
+                    onLoad={this.onImgLoad} 
                 />
-              <input onClick={this.rotate} type="button" value="Prawo" />
+              </div>
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileHandler} />
+              <div>
+                <input onClick={this.rotate} type="button" value="Prawo" />
+                <input onClick={this.rotateleft} type="button" value="Lewo" />
+              </div>
               <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
               <div style={calcStyle}>
                 <p>Width: {width} </p>
