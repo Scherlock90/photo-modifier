@@ -218,7 +218,8 @@ const data = {
         maxHeight: '90%',
         padding: '1em',
         lineHeight: '1.5em',
-        color: 'white'
+        color: 'white',
+        textAlign: 'left'
       }
       const imgStyle3 = {
         padding: '2em',
