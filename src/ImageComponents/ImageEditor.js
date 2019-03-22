@@ -246,8 +246,8 @@ const data = {
           <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
             <div className='containerGuitar' style={imgStyle3}>
             <div>
-          <p style={styleTitle}> React Photo-Modifier</p>
-            <img src={logo} className="App-logo" alt="logo" />
+              <p style={styleTitle}> React Photo-Modifier</p>
+              <img src={logo} className="App-logo" alt="logo" />
           </div>
               <div style={imgStyle3}>
                 <img id="ing" 
