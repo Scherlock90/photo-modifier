@@ -163,8 +163,8 @@ const data = {
             this.onBoundsElement();
           }
         this.setState({
-         width: this.props.width,
-         height: this.props.height
+         width: this.state.width,
+         height: this.state.height
       });
     }  
     rotate = (e) => {
