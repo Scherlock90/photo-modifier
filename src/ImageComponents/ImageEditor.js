@@ -29,11 +29,7 @@ const data = {
       {
         name: 'rotation',
         value: '0'
-      },
-      // {
-      //   name: 'width',
-      //   value: '0'
-      // }
+      }
     ]
   }
   
@@ -66,9 +62,6 @@ const data = {
                   break;
               case 'rotation':
                   this.props.data.settings[6].value = value;
-                  break;
-                  case 'width':
-                  this.props.data.settings[7].value = value;
                   break;
           }
           this.forceUpdate();
@@ -105,8 +98,6 @@ const data = {
         case 'grayscale': return (<input type="range" step="1" min="0" max="100" id={setting.name} onChange={onChange} defaultValue={setting.value}  />)
           break;
         case 'rotation': return (<input type="range" step="1" min="0" max="360" id={setting.name} onChange={onChange} defaultValue={setting.value}  /> )
-          break;
-          case 'width': return (<input type="range" step="1" min="0" max="1400" id={setting.name} onChange={onChange} defaultValue={setting.value}  /> )
           break;
         default: return (<input type="range"/>)
       } 
