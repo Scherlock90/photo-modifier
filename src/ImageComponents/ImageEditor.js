@@ -30,28 +30,12 @@ const data = {
         name: 'rotation',
         value: '0'
       },
-      {
-        name: 'width',
-        value: '0'
-      }
+      // {
+      //   name: 'width',
+      //   value: '0'
+      // }
     ]
   }
-  const ImagePixels = ({ value }) => (
-    <>
-      <div>
-        Width: {value.w}
-        px
-      </div>
-      <div>
-        Height: {value.h}
-        px
-      </div>
-      <div>
-        Size: {value.size}
-        px
-      </div>
-    </>
-  );
   
   export default class ImageEditor extends React.Component{
     constructor(){
@@ -159,12 +143,9 @@ const data = {
         rotation: 0,
         width: 0,
         height: 0,
-        pixels: {
-            w: 0,
-            h: 0,
-         }, 
          x: 0,
-         y: 0
+         y: 0,
+        AllPix: 0
       }
     }
     _onMouseMove = (e) => {
@@ -176,7 +157,8 @@ const data = {
       console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
       this.setState({
         width: bounds.width,
-        height: bounds.height
+        height: bounds.height,
+        AllPix: bounds.width * bounds.height
       })    
   }
     onImgLoad = ({ target: img }) => {
@@ -247,12 +229,22 @@ const data = {
       })
     }
     render(){
-      let { rotation, width, height, x, y } =  this.state;
+      let { rotation, width, height, x, y, AllPix } =  this.state;
+      let newRot = rotation;
+      let newSett = this.props.settings[6].value;
+      newSett = newRot;
       const imgStyle = {
-        style: `width(${this.props.settings[7].value}px)`,
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
         invert(${this.props.settings[5].value})`
+      }
+      if ( newRot > 0) {
+        console.log('value' + newSett + ' ' + newRot);
+        console.log(newRot = newSett);
+        newSett = newRot;         
+      }
+      else if (newSett == 360) {
+        return 360
       }
 
       const imgStyle2 = {
@@ -263,6 +255,7 @@ const data = {
         color: 'white'
       }
       const imgStyle3 = {
+        padding: '2em',
         maxWidth: '85%',
         maxHeight: '90%'
       }
@@ -289,9 +282,11 @@ const data = {
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileChangedHandler} />
-              <p>Szerokość: {width} </p>
-              <p>Wysokość: {height} </p>
-              <p>Szerokość w obrazie: { x } Wyskoość w obrazie: { y }</p>
+              <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width" />
+              <p>Width: {width} </p>
+              <p>Height: {height} </p>
+              <p>Width in img: { x } Height in img: { y }</p>
+              <p> PX: {AllPix} </p>
             </div>                  
           </form>
         </div>
