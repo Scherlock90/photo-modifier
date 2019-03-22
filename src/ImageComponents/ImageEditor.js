@@ -214,7 +214,7 @@ const data = {
       }
 
       const imgStyle2 = {
-        maxWidth: '15%',
+        maxWidth: '30%',
         maxHeight: '90%',
         padding: '1em',
         lineHeight: '1.5em',
@@ -226,11 +226,14 @@ const data = {
         maxHeight: '90%'
       }
       const imageContainerUpload = {
-          width: '800px',
+          width: 'auto',
           height: '800px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
+      }
+      const calcStyle = {
+          textAlign: 'left'
       }
       return(
         <div className="imageContainer">
@@ -243,16 +246,20 @@ const data = {
                   style={imgStyle}
                   onClick={this.onBoundsElement}
                   onMouseMove={this._onMouseMove}
-                  onLoad={this.onImgLoad} />
+                  onLoad={this.onImgLoad} 
+                />
               <input onClick={this.rotate} type="button" value="Prawo" />
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileHandler} />
               <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
-              <p>Width: {width} </p>
-              <p>Height: {height} </p>
-              <p>Width in img: { x } Height in img: { y }</p>
-              <p> Px: {AllPix} </p>
+              <div style={calcStyle}>
+                <p>Width: {width} </p>
+                <p>Height: {height} </p>
+                <p> Px: {AllPix} </p>
+                <p>Width inside img: { x }</p>
+                <p>Height inside img: { y }</p>
+              </div>              
             </div>                  
           </form>
         </div>
