@@ -154,7 +154,7 @@ const data = {
   onBoundsElement = (e) => {
       let guitarBounds = document.querySelector('.guitar');
       let bounds = guitarBounds.getBoundingClientRect();
-      console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
+      console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
       this.setState({
         width: bounds.width,
         height: bounds.height,
@@ -164,7 +164,7 @@ const data = {
     onImgLoad = ({ target: img }) => {
     this.setState({
       width: img.width,
-      height: img.height,
+      height: img.height
     });
   };
     componentDidMount () {
@@ -176,24 +176,6 @@ const data = {
          height: this.props.height
       });
     }  
-    componentWillUpdate () {
-      // console.log('this didupdate');
-      // if (this.props.settings[6].value > 0) {
-      //   this.onBoundsElement();
-      // }
-    } 
-
-      handlePixels = (width, height) => {
-      const { img } = this.props;
-      const boundary = this.onImgLoad;
-      const pixels = {
-         w: (10),
-         h: (10),
-         size: (10)
-      };
-
-      return pixels;
-   };
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
       this.onBoundsElement();
@@ -212,13 +194,6 @@ const data = {
       }
       this.setState({
         rotation: newRotation,
-      })
-    }
-
-    handleClearDefault = () => {
-      this.setState({
-        width: 0,
-        height: 0
       })
     }
     
@@ -282,11 +257,11 @@ const data = {
             </div>
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileChangedHandler} />
-              <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width" />
+              <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
               <p>Width: {width} </p>
               <p>Height: {height} </p>
               <p>Width in img: { x } Height in img: { y }</p>
-              <p> PX: {AllPix} </p>
+              <p> Px: {AllPix} </p>
             </div>                  
           </form>
         </div>
