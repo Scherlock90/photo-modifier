@@ -171,13 +171,13 @@ const data = {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
   onBoundsElement = (e) => {
-    let guitarBounds = document.querySelector('.guitar');
-    let bounds = guitarBounds.getBoundingClientRect();
-    console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
-    this.setState({
-      width: bounds.width,
-      height: bounds.height
-    })
+      let guitarBounds = document.querySelector('.guitar');
+      let bounds = guitarBounds.getBoundingClientRect();
+      console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
+      this.setState({
+        width: bounds.width,
+        height: bounds.height
+      })    
   }
     onImgLoad = ({ target: img }) => {
     this.setState({
@@ -186,14 +186,22 @@ const data = {
     });
   };
     componentDidMount () {
-      this.onBoundsElement();
+      if (this.props.settings[6].value > 0) {
+            this.onBoundsElement();
+          }
         this.setState({
          width: this.props.width,
          height: this.props.height
       });
-    }   
+    }  
+    componentWillUpdate () {
+      // console.log('this didupdate');
+      // if (this.props.settings[6].value > 0) {
+      //   this.onBoundsElement();
+      // }
+    } 
 
-      handlePixels = (w, h) => {
+      handlePixels = (width, height) => {
       const { img } = this.props;
       const boundary = this.onImgLoad;
       const pixels = {
@@ -206,6 +214,7 @@ const data = {
    };
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
+      this.onBoundsElement();
       if(newRotation >= 360){
         newRotation = 360;
       }
@@ -214,12 +223,20 @@ const data = {
       })
     }
     rotateleft = (e) => {
-      let newRotation = this.state.rotation - 60;      
+      let newRotation = this.state.rotation - 60; 
+      this.onBoundsElement();     
       if(newRotation <= -360){
         newRotation = -360;
       }
       this.setState({
         rotation: newRotation,
+      })
+    }
+
+    handleClearDefault = () => {
+      this.setState({
+        width: 0,
+        height: 0
       })
     }
     
@@ -235,8 +252,9 @@ const data = {
         style: `width(${this.props.settings[7].value}px)`,
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
-        invert(${this.props.settings[5].value})`,
+        invert(${this.props.settings[5].value})`
       }
+
       const imgStyle2 = {
         maxWidth: '15%',
         maxHeight: '90%',
@@ -264,7 +282,6 @@ const data = {
                   src={this.state.imageField}
                   className="guitar" 
                   style={imgStyle}
-                  width={width} height={height}
                   onClick={this.onBoundsElement}
                   onMouseMove={this._onMouseMove}
                   onLoad={this.onImgLoad} />
