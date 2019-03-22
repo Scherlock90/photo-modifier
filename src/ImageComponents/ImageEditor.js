@@ -198,7 +198,7 @@ const data = {
     }
     
 //image Upload elements
-  fileChangedHandler = (event) => {
+  fileHandler = (event) => {
       event.preventDefault();
       this.setState({imageField: URL.createObjectURL(event.target.files[0])
       })
@@ -256,7 +256,7 @@ const data = {
               <input onClick={this.rotate} type="button" value="Prawo" />
             </div>
             <div style={imgStyle2}>
-              <input type="file" id="imageField" onChange={this.fileChangedHandler} />
+              <input type="file" id="imageField" onChange={this.fileHandler} />
               <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
               <p>Width: {width} </p>
               <p>Height: {height} </p>
