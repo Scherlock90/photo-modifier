@@ -1,7 +1,9 @@
 import React from 'react';
-import logo from '../logo.svg'
+import logo from '../logo.svg';
+import defaultImage from '../Image/sen.jpg'
 
 const data = {
+    image : defaultImage,
     settings:[
       {
           name: 'contrast',
@@ -203,7 +205,8 @@ const data = {
       const imgStyle = {
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
-        invert(${this.props.settings[5].value})`
+        invert(${this.props.settings[5].value})`,
+        backgroundImage:`url(${this.props.url})`
       }
       if ( newRot > 0) {
         console.log('value' + newSett + ' ' + newRot);
