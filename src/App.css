@@ -52,11 +52,12 @@
 }
 
 .contentWrap{
-      display: flex;
+    display: flex;
     width: 100%;
     height: 100%;
 }
 .sidebar {
+    display: grid;
     width: 30%;
     height: 100%;
     max-width: 350px;
