@@ -263,8 +263,8 @@ const data = {
             <div style={imgStyle2}>
               <input type="file" id="imageField" onChange={this.fileHandler} />
               <div>
-                <input onClick={this.rotate} type="button" value="Prawo" />
                 <input onClick={this.rotateleft} type="button" value="Lewo" />
+                <input onClick={this.rotate} type="button" value="Prawo" />                
               </div>
               <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
               <div style={calcStyle}>
