@@ -2,6 +2,7 @@
   "name": "photo-modifier",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Scherlock90.github.io/photo-modifier/",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/lab": "^3.0.0-alpha.30",
