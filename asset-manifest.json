@@ -1,14 +1,14 @@
 {
-  "main.css": "/ReactMOSPage/static/css/main.7ee6d5f9.chunk.css",
-  "main.js": "/ReactMOSPage/static/js/main.fb1c46de.chunk.js",
-  "main.js.map": "/ReactMOSPage/static/js/main.fb1c46de.chunk.js.map",
-  "runtime~main.js": "/ReactMOSPage/static/js/runtime~main.b1af2b76.js",
-  "runtime~main.js.map": "/ReactMOSPage/static/js/runtime~main.b1af2b76.js.map",
-  "static/js/2.d359ce29.chunk.js": "/ReactMOSPage/static/js/2.d359ce29.chunk.js",
-  "static/js/2.d359ce29.chunk.js.map": "/ReactMOSPage/static/js/2.d359ce29.chunk.js.map",
-  "index.html": "/ReactMOSPage/index.html",
-  "precache-manifest.37b90f4976708949718f067855a20b82.js": "/ReactMOSPage/precache-manifest.37b90f4976708949718f067855a20b82.js",
-  "service-worker.js": "/ReactMOSPage/service-worker.js",
-  "static/css/main.7ee6d5f9.chunk.css.map": "/ReactMOSPage/static/css/main.7ee6d5f9.chunk.css.map",
-  "static/media/logo.svg": "/ReactMOSPage/static/media/logo.ee7cd8ed.svg"
+  "main.css": "/photo-modifier/static/css/main.7ee6d5f9.chunk.css",
+  "main.js": "/photo-modifier/static/js/main.31eeedb4.chunk.js",
+  "main.js.map": "/photo-modifier/static/js/main.31eeedb4.chunk.js.map",
+  "runtime~main.js": "/photo-modifier/static/js/runtime~main.85ddbfa5.js",
+  "runtime~main.js.map": "/photo-modifier/static/js/runtime~main.85ddbfa5.js.map",
+  "static/js/2.d359ce29.chunk.js": "/photo-modifier/static/js/2.d359ce29.chunk.js",
+  "static/js/2.d359ce29.chunk.js.map": "/photo-modifier/static/js/2.d359ce29.chunk.js.map",
+  "index.html": "/photo-modifier/index.html",
+  "precache-manifest.a635adf9e51cacb42f55b9c8faee9f4a.js": "/photo-modifier/precache-manifest.a635adf9e51cacb42f55b9c8faee9f4a.js",
+  "service-worker.js": "/photo-modifier/service-worker.js",
+  "static/css/main.7ee6d5f9.chunk.css.map": "/photo-modifier/static/css/main.7ee6d5f9.chunk.css.map",
+  "static/media/logo.svg": "/photo-modifier/static/media/logo.ee7cd8ed.svg"
 }
