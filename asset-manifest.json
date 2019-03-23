@@ -1,5 +1,5 @@
 {
-  "main.css": "/photo-modifier/static/css/main.7ee6d5f9.chunk.css",
+  "main.css": "/photo-modifier/static/css/main.17cd80aa.chunk.css",
   "main.js": "/photo-modifier/static/js/main.1fdb1cc5.chunk.js",
   "main.js.map": "/photo-modifier/static/js/main.1fdb1cc5.chunk.js.map",
   "runtime~main.js": "/photo-modifier/static/js/runtime~main.85ddbfa5.js",
@@ -7,8 +7,8 @@
   "static/js/2.d359ce29.chunk.js": "/photo-modifier/static/js/2.d359ce29.chunk.js",
   "static/js/2.d359ce29.chunk.js.map": "/photo-modifier/static/js/2.d359ce29.chunk.js.map",
   "index.html": "/photo-modifier/index.html",
-  "precache-manifest.69a31946f62d712cc32267441556f7cc.js": "/photo-modifier/precache-manifest.69a31946f62d712cc32267441556f7cc.js",
+  "precache-manifest.d46d6912a6b705fedb50726be2544821.js": "/photo-modifier/precache-manifest.d46d6912a6b705fedb50726be2544821.js",
   "service-worker.js": "/photo-modifier/service-worker.js",
-  "static/css/main.7ee6d5f9.chunk.css.map": "/photo-modifier/static/css/main.7ee6d5f9.chunk.css.map",
+  "static/css/main.17cd80aa.chunk.css.map": "/photo-modifier/static/css/main.17cd80aa.chunk.css.map",
   "static/media/logo.svg": "/photo-modifier/static/media/logo.ee7cd8ed.svg"
 }
