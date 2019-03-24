@@ -162,13 +162,7 @@ const data = {
     });
   };
     componentDidMount () {
-      if (this.props.settings[6].value > 0) {
-            this.onBoundsElement();
-          }
-        this.setState({
-         width: this.state.width,
-         height: this.state.height
-      });
+      this.onBoundsElement();
     }  
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
@@ -248,7 +242,7 @@ const data = {
       return(
         <div className="imageContainer">
           <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
-            <div className='containerGuitar' style={imgStyle3}>
+            <div className="containerGuitar" style={imgStyle3}>
             <div>
               <p style={styleTitle}> React Photo-Modifier</p>
               <img src={logo} className="App-logo" alt="logo" />
