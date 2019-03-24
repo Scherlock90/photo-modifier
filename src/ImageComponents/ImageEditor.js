@@ -220,6 +220,7 @@ const data = {
       const imgStyle2 = {
         maxWidth: '30%',
         maxHeight: '90%',
+        height: '100%',
         padding: '1em',
         lineHeight: '1.5em',
         color: 'white',
