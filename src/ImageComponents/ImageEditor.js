@@ -1,6 +1,9 @@
 import React from 'react';
+import logo from '../logo.svg';
+import defaultImage from '../Image/sen.jpg'
 
 const data = {
+    image : defaultImage,
     settings:[
       {
           name: 'contrast',
@@ -134,53 +137,42 @@ const data = {
         rotation: 0,
         width: 0,
         height: 0,
-        pixels: {
-            w: 0,
-            h: 0,
-         }, 
          x: 0,
-         y: 0
+         y: 0,
+        AllPix: 0
       }
     }
     _onMouseMove = (e) => {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
   onBoundsElement = (e) => {
-    let guitarBounds = document.querySelector('.guitar');
-    let bounds = guitarBounds.getBoundingClientRect();
-    console.log( bounds.width + ' szerokości' + ' i ' + bounds.height + ' wyskokości.');
-    this.setState({
-      width: bounds.width,
-      height: bounds.height
-    })
+      let guitarBounds = document.querySelector('.guitar');
+      let bounds = guitarBounds.getBoundingClientRect();
+      console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
+      this.setState({
+        width: bounds.width,
+        height: bounds.height,
+        AllPix: bounds.width * bounds.height
+      })    
   }
     onImgLoad = ({ target: img }) => {
     this.setState({
       width: img.width,
-      height: img.height,
+      height: img.height
     });
   };
     componentDidMount () {
-      this.onBoundsElement();
+      if (this.props.settings[6].value > 0) {
+            this.onBoundsElement();
+          }
         this.setState({
-         width: this.props.width,
-         height: this.props.height
+         width: this.state.width,
+         height: this.state.height
       });
-    }   
-
-      handlePixels = (w, h) => {
-      const { img } = this.props;
-      const boundary = this.onImgLoad;
-      const pixels = {
-         w: (10),
-         h: (10),
-         size: (10)
-      };
-
-      return pixels;
-   };
+    }  
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
+      this.onBoundsElement();
       if(newRotation >= 360){
         newRotation = 360;
       }
@@ -189,7 +181,8 @@ const data = {
       })
     }
     rotateleft = (e) => {
-      let newRotation = this.state.rotation - 60;      
+      let newRotation = this.state.rotation - 60; 
+      this.onBoundsElement();     
       if(newRotation <= -360){
         newRotation = -360;
       }
@@ -199,56 +192,91 @@ const data = {
     }
     
 //image Upload elements
-  fileChangedHandler = (event) => {
+  fileHandler = (event) => {
       event.preventDefault();
       this.setState({imageField: URL.createObjectURL(event.target.files[0])
       })
     }
     render(){
-      let { rotation, width, height, x, y } =  this.state;
+      let { rotation, width, height, x, y, AllPix } =  this.state;
+      let newRot = rotation;
+      let newSett = this.props.settings[6].value;
+      newSett = newRot;
       const imgStyle = {
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
         invert(${this.props.settings[5].value})`,
+        backgroundImage:`url(${this.props.url})`
       }
+      if ( newRot > 0) {
+        console.log('value' + newSett + ' ' + newRot);
+        console.log(newRot = newSett);
+        newSett = newRot;         
+      }
+      else if (newSett == 360) {
+        return 360
+      }
+
       const imgStyle2 = {
-        maxWidth: '15%',
+        maxWidth: '30%',
         maxHeight: '90%',
         padding: '1em',
         lineHeight: '1.5em',
-        color: 'white'
+        color: 'white',
+        textAlign: 'left'
       }
       const imgStyle3 = {
+        padding: '3em',
         maxWidth: '85%',
         maxHeight: '90%'
       }
       const imageContainerUpload = {
-          width: '800px',
+          width: 'auto',
           height: '800px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
       }
+      const calcStyle = {
+          textAlign: 'left'
+      }
+      const styleTitle = {
+          color: 'white',
+          fontSize: '40px'
+      }
       return(
         <div className="imageContainer">
           <form style={imageContainerUpload} action="/upload" method="POST" encType="multipart/form-data" onSubmit={this.handleSumbit}>
             <div className='containerGuitar' style={imgStyle3}>
-              <input onClick={this.rotateleft} type="button" value="Lewo" />
+            <div>
+              <p style={styleTitle}> React Photo-Modifier</p>
+              <img src={logo} className="App-logo" alt="logo" />
+          </div>
+              <div style={imgStyle3}>
                 <img id="ing" 
-                  src={this.state.imageField}
-                  className="guitar" 
-                  style={imgStyle}
-                  width={width} height={height}
-                  onClick={this.onBoundsElement}
-                  onMouseMove={this._onMouseMove}
-                  onLoad={this.onImgLoad} />
-              <input onClick={this.rotate} type="button" value="Prawo" />
+                    src={this.state.imageField}
+                    className="guitar" 
+                    style={imgStyle}
+                    onClick={this.onBoundsElement}
+                    onMouseMove={this._onMouseMove}
+                    onLoad={this.onImgLoad} 
+                />
+              </div>
             </div>
             <div style={imgStyle2}>
-              <input type="file" id="imageField" onChange={this.fileChangedHandler} />
-              <p>Szerokość: {width} </p>
-              <p>Wysokość: {height} </p>
-              <p>Szerokość w obrazie: { x } Wyskoość w obrazie: { y }</p>
+              <input type="file" id="imageField" onChange={this.fileHandler} />
+              <div>
+                <input onClick={this.rotateleft} type="button" value="Lewo" />
+                <input onClick={this.rotate} type="button" value="Prawo" />                
+              </div>
+              <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
+              <div style={calcStyle}>
+                <p>Width: {width} </p>
+                <p>Height: {height} </p>
+                <p> Px: {AllPix} </p>
+                <p>Width inside img: { x }</p>
+                <p>Height inside img: { y }</p>
+              </div>              
             </div>                  
           </form>
         </div>
