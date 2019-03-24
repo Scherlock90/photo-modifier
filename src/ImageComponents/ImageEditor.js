@@ -166,7 +166,7 @@ const data = {
     }  
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
-      this.onBoundsElement();
+      {/* this.onBoundsElement(); */}
       if(newRotation >= 360){
         newRotation = 360;
       }
@@ -176,7 +176,7 @@ const data = {
     }
     rotateleft = (e) => {
       let newRotation = this.state.rotation - 60; 
-      this.onBoundsElement();     
+      {/* this.onBoundsElement();      */}
       if(newRotation <= -360){
         newRotation = -360;
       }
@@ -215,10 +215,11 @@ const data = {
         maxWidth: '30%',
         maxHeight: '90%',
         height: '100%',
-        padding: '1em',
+        padding: '0 0 0 5em',
         lineHeight: '1.5em',
         color: 'white',
-        textAlign: 'left'
+        textAlign: 'left',        
+        display: 'grid'
       }
       const imgStyle3 = {
         padding: '3em',
@@ -259,18 +260,20 @@ const data = {
               </div>
             </div>
             <div style={imgStyle2}>
-              <input type="file" id="imageField" onChange={this.fileHandler} />
-              <div>
+              <input type="file" className="parameters" id="imageField" onChange={this.fileHandler} />
+              <div className="parameters" >
                 <input onClick={this.rotateleft} type="button" value="Lewo" />
                 <input onClick={this.rotate} type="button" value="Prawo" />                
               </div>
-              <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
+              <div  className="parameters">
+                <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
+              </div>
               <div style={calcStyle}>
-                <p>Width: {width} </p>
-                <p>Height: {height} </p>
-                <p> Px: {AllPix} </p>
-                <p>Width inside img: { x }</p>
-                <p>Height inside img: { y }</p>
+                <p className="parameters">Width: {width} </p>
+                <p className="parameters">Height: {height} </p>
+                <p className="parameters"> Px: {AllPix} </p>
+                <p className="parameters">Width inside img: { x }</p>
+                <p className="parameters">Height inside img: { y }</p>
               </div>              
             </div>                  
           </form>

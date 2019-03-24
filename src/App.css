@@ -48,7 +48,12 @@
     position: relative;
     background-position: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  
+}
+.parameters{
+  padding: 0 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid hsla(0,0%,100%,.05);
+  height: 80px;
 }
 
 .contentWrap{
