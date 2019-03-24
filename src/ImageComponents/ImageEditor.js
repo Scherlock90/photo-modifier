@@ -162,13 +162,7 @@ const data = {
     });
   };
     componentDidMount () {
-      if (this.props.settings[6].value > 0) {
-            this.onBoundsElement();
-          }
-        this.setState({
-         width: this.state.width,
-         height: this.state.height
-      });
+      this.onBoundsElement();
     }  
     rotate = (e) => {
       let newRotation = this.state.rotation + 60;
