@@ -29,29 +29,9 @@ const data = {
       {
         name: 'rotation',
         value: '0'
-      },
-      {
-        name: 'width',
-        value: '0'
       }
     ]
   }
-  const ImagePixels = ({ value }) => (
-    <>
-      <div>
-        Width: {value.w}
-        px
-      </div>
-      <div>
-        Height: {value.h}
-        px
-      </div>
-      <div>
-        Size: {value.size}
-        px
-      </div>
-    </>
-  );
   
   export default class ImageEditor extends React.Component{
     constructor(){
@@ -82,9 +62,6 @@ const data = {
                   break;
               case 'rotation':
                   this.props.data.settings[6].value = value;
-                  break;
-                  case 'width':
-                  this.props.data.settings[7].value = value;
                   break;
           }
           this.forceUpdate();
@@ -121,8 +98,6 @@ const data = {
         case 'grayscale': return (<input type="range" step="1" min="0" max="100" id={setting.name} onChange={onChange} defaultValue={setting.value}  />)
           break;
         case 'rotation': return (<input type="range" step="1" min="0" max="360" id={setting.name} onChange={onChange} defaultValue={setting.value}  /> )
-          break;
-          case 'width': return (<input type="range" step="1" min="0" max="1400" id={setting.name} onChange={onChange} defaultValue={setting.value}  /> )
           break;
         default: return (<input type="range"/>)
       } 
@@ -232,7 +207,6 @@ const data = {
     render(){
       let { rotation, width, height, x, y } =  this.state;
       const imgStyle = {
-        style: `width(${this.props.settings[7].value}px)`,
         transform: `rotate(${this.props.settings[6].value}deg) rotate(${rotation}deg)`,
         filter: ` contrast(${this.props.settings[0].value}) hue-rotate(${this.props.settings[1].value}) brightness(${this.props.settings[2].value}) saturate(${this.props.settings[3].value}) sepia(${this.props.settings[4].value})
         invert(${this.props.settings[5].value})`,
