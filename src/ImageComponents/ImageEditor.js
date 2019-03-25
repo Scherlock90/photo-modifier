@@ -259,16 +259,14 @@ const data = {
                 />
               </div>
             </div>
-            <div style={imgStyle2}>
-              <input type="file" className="parameters" id="imageField" onChange={this.fileHandler} />
-              <div className="parameters" >
-                <input onClick={this.rotateleft} type="button" value="Lewo" />
-                <input onClick={this.rotate} type="button" value="Prawo" />                
-              </div>
-              <div  className="parameters">
-                <input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" />
-              </div>
+            <div style={imgStyle2} className="parametersContainer">
               <div style={calcStyle}>
+                <p className="parameters"><input type="file" id="imageField" onChange={this.fileHandler} /></p>
+                <p className="parameters">
+                  <input onClick={this.rotateleft} type="button" value="Lewo" />
+                  <input onClick={this.rotate} type="button" value="Prawo" />  
+                </p>
+                <p className="parameters"><input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" /> </p>
                 <p className="parameters">Width: {width} </p>
                 <p className="parameters">Height: {height} </p>
                 <p className="parameters"> Px: {AllPix} </p>
