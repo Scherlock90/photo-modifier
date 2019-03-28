@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/photo-modifier/static/js/runtime~main.85ddbfa5.js"
   },
   {
-    "revision": "d4b3f9359ba662fb8e87",
-    "url": "/photo-modifier/static/js/main.31cfd704.chunk.js"
+    "revision": "c49cbd504307c419d575",
+    "url": "/photo-modifier/static/js/main.f74e5c5c.chunk.js"
   },
   {
-    "revision": "989fc050f38e17dc1170",
-    "url": "/photo-modifier/static/js/2.6030f757.chunk.js"
+    "revision": "1be0456417f445b5b92e",
+    "url": "/photo-modifier/static/js/2.aa5d3e50.chunk.js"
   },
   {
-    "revision": "d4b3f9359ba662fb8e87",
-    "url": "/photo-modifier/static/css/main.5bbac829.chunk.css"
+    "revision": "c49cbd504307c419d575",
+    "url": "/photo-modifier/static/css/main.d171732b.chunk.css"
   },
   {
-    "revision": "97bc4eb03ab1f0f59c096b900415cbf3",
+    "revision": "2519bb63c62abedaa8d25b7796597c56",
     "url": "/photo-modifier/index.html"
   }
 ];
