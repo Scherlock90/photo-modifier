@@ -133,7 +133,7 @@ const data = {
     constructor(props){
       super(props);
       this.state = {
-        imageField: '',
+        imageField: null,
         rotation: 0,
         width: 0,
         height: 0,
