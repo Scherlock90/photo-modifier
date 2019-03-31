@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
-import defaultImage from '../Image/sen.jpg'
+import defaultImage from '../Image/sen.jpg';
 
 const data = {
     image : defaultImage,
