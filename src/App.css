@@ -48,6 +48,7 @@
     position: relative;
     background-position: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
 }
 .parameters{
   padding: 0 20px;
@@ -138,6 +139,7 @@ input[type=range] {
   -webkit-appearance: none;
       width: 100%;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -183,6 +185,10 @@ input[type=range]::-moz-range-thumb {
 input[type=range]:-moz-focusring {
   outline: 1px solid #dce6e9;
   outline-offset: -1px;
+}
+
+.cursorPointer{
+  cursor: pointer;
 }
 
 

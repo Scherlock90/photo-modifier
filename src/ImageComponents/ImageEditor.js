@@ -263,10 +263,10 @@ const data = {
               <div style={calcStyle}>
                 <p className="parameters"><input type="file" id="imageField" onChange={this.fileHandler} /></p>
                 <p className="parameters">
-                  <input onClick={this.rotateleft} type="button" value="Lewo" />
-                  <input onClick={this.rotate} type="button" value="Prawo" />  
+                  <input onClick={this.rotateleft} className="cursorPointer" type="button" value="Lewo" />
+                  <input onClick={this.rotate} className="cursorPointer" type="button" value="Prawo" />  
                 </p>
-                <p className="parameters"><input onClick={this.onBoundsElement} type="button" value="Value of Height/Width/Px" /> </p>
+                <p className="parameters"><input onClick={this.onBoundsElement} className="cursorPointer" type="button" value="Value of Height/Width/Px" /> </p>
                 <p className="parameters">Width: {width} </p>
                 <p className="parameters">Height: {height} </p>
                 <p className="parameters"> Px: {AllPix} </p>
