@@ -71,7 +71,7 @@ export default function imageEditor () {
     setRotation(rotation);
     return rotation
   }
-  // function onBoundsElement (e) {
+  // function onBoundsElement (e: any) {
   //     let guitarBounds = document.querySelector('.imgStyle');
   //     let bounds = guitarBounds.getBoundingClientRect();
   //     console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
@@ -79,10 +79,10 @@ export default function imageEditor () {
   //     setHeight(bounds.height.toFixed(0));
   //     setAllPix(bounds.width.toFixed(0) * bounds.height.toFixed(0));  
   // }
-  // function fileHandler (e) {
-  //   setImage(URL.createObjectURL(e.target.files[0])
-  //   )
-  // }
+  function fileHandler (e: any) {
+    setImage(URL.createObjectURL(e.target.files[0])
+    )
+  }
   const container = {
     color: color,
     borderRadius: '5%',
@@ -216,7 +216,7 @@ export default function imageEditor () {
           <img style={imgStyle} src={image}  className="imgStyle" />
           <p className="colorStyle" style={colorStyle} > {name}</p>
           <div className="buttonImage">
-            {/* <input type="file" id="image" onChange={fileHandler} /> */}
+            <input type="file" id="image" onChange={fileHandler} />
           </div>
         </div>
         <div style={valueStyle}>
