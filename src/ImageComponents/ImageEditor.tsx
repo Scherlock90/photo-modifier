@@ -16,11 +16,10 @@ const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
       <Typography id="label">
         {children}
       </Typography>
-      <Slider className="slider"
+      <Slider
         min={0}
         max={max}
         value={value}
-        aria-labelledby="label"
         step={1}
         onChange={onChange}
       />
