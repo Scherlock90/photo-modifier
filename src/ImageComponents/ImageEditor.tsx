@@ -127,6 +127,9 @@ export default function imageEditor () {
     fontSize: '40px',
     padding: '1em 0 0 0'
   }
+  const containerImage = {
+    padding: '3.5em 0 3.5em 0'
+  }
   return (
       <div>
         <div style={headerTitle}>
@@ -212,7 +215,9 @@ export default function imageEditor () {
           </div>
         </div>
         <div style={elementChangingStyle}>
-          <img style={imgStyle} src={image}  className="imgStyle" id="ing" onClick={onBoundsElement} />
+          <div style={containerImage}>
+            <img src={image} style={imgStyle} className="imgStyle" id="ing" onClick={onBoundsElement} />
+          </div>          
           <p className="colorStyle" style={colorStyle} > {name}</p>
           <div className="buttonImage">
             <input type="file" id="image" onChange={fileHandler} />
