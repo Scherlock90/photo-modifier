@@ -28,7 +28,7 @@ const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
 )
 
 
-export default function imageEditor () {
+export default function ImageEditor () {
   const [contrast, setContrast] = useState(1);
   const [brightness, setBrightness] = useState(1);
   const [invert, setInvert] = useState(0);
