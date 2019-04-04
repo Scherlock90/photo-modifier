@@ -29,13 +29,13 @@ const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
 
 
 export default function imageEditor () {
-  const [contrast, setContrast] = useState('100%');
+  const [contrast, setContrast] = useState(1);
   const [brightness, setBrightness] = useState(1);
-  const [invert, setInvert] = useState("0%");
-  const [saturate, setSaturate] = useState("100%");
-  const [sepia, setSepia] = useState("0%");
+  const [invert, setInvert] = useState(0);
+  const [saturate, setSaturate] = useState(1);
+  const [sepia, setSepia] = useState(0);
   const [grayscale, setGrayscale] = useState(0);
-  const [rotation, setRotation] = useState("0deg");
+  const [rotation, setRotation] = useState(0);
   const [width, setWidth] = useState('0');
   const [height, setHeight] = useState('0');
   const [allPix, setAllPix] = useState('0');
@@ -44,27 +44,33 @@ export default function imageEditor () {
   const [image, setImage] = useState(defaultImage);
 
   function onBrightness (e: any, brightness: number) { 
+    setBrightness(brightness);
     return brightness
   }
   function onGrayscale (e: any, grayscale: number) {    
-    // setGrayscale(grayscale);
+    setGrayscale(grayscale);
     return grayscale
   }
-  // function onContrast (e, contrast) {    
-  //   setContrast(contrast);
-  // }
-  // function onInvert (e, invert) {    
-  //   setInvert(invert);
-  // }
-  // function onSaturate (e, saturate) {    
-  //   setSaturate(saturate);
-  // }
-  // function onSepia (e, sepia) {    
-  //   setSepia(sepia);
-  // }
-  // function onRotation (e, rotation) {    
-  //   setRotation(rotation);
-  // }
+  function onContrast (e: any, contrast: number) {    
+    setContrast(contrast);
+    return contrast
+  }
+  function onInvert (e: any, invert: number) {    
+    setInvert(invert);
+    return invert
+  }
+  function onSaturate (e: any, saturate: number) {    
+    setSaturate(saturate);
+    return saturate
+  }
+  function onSepia (e: any, sepia: number) {    
+    setSepia(sepia);
+    return sepia
+  }
+  function onRotation (e: any, rotation: number) {    
+    setRotation(rotation);
+    return rotation
+  }
   // function onBoundsElement (e) {
   //     let guitarBounds = document.querySelector('.imgStyle');
   //     let bounds = guitarBounds.getBoundingClientRect();
@@ -142,7 +148,7 @@ export default function imageEditor () {
               Brightness {brightness}
             </span>
           </ImageSlider>
-          {/* <ImageSlider
+          <ImageSlider
               max={100}
               value={contrast}
               onChange={onContrast}
@@ -150,7 +156,7 @@ export default function imageEditor () {
             <span style={colorStyle}>
               Contrast {contrast}
             </span>
-          </ImageSlider> */}
+          </ImageSlider>
           <ImageSlider
               max={100}
               value={grayscale}
@@ -160,7 +166,7 @@ export default function imageEditor () {
               Grayscale {grayscale}
             </span>
           </ImageSlider>
-          {/* <ImageSlider
+          <ImageSlider
               max={100}
               value={saturate}
               onChange={onSaturate}
@@ -187,7 +193,7 @@ export default function imageEditor () {
               Invert {invert}
             </span>
           </ImageSlider>
-          <ImageSlider style={buttonStyle}
+          <ImageSlider
               max={360}
               value={rotation}
               onChange={onRotation}
@@ -195,7 +201,7 @@ export default function imageEditor () {
             <span style={colorStyle}>
               Rotation {rotation}
             </span>
-          </ImageSlider> */}
+          </ImageSlider>
           <div className="buttonContainer">
             <div className="buttonOnSettings">
               <button style={buttonStyle} onClick={() => setName('Lucek')}>Change name</button>
