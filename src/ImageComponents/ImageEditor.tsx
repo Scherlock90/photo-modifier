@@ -224,7 +224,7 @@ export default function imageEditor () {
           <p style={parametersStyle}>Height: {height} px</p>
           <p style={parametersStyle}>Size: {allPix} px</p>
           <div className="buttonImage">
-            {/* <button onClick={onBoundsElement} className="cursorPointer" type="button"  >Value of Height/Width/Size"</button> */}
+            <button onClick={onBoundsElement} className="cursorPointer" type="button"  >Value of Height/Width/Size"</button>
           </div>
         </div>
       </div>
