@@ -1,4 +1,4 @@
-import React, { useState, useEffect, SFC, ReactNode } from 'react';
+import React, { useState, SFC } from 'react';
 import './imageEditor.css';
 import logo from '../logo.svg';
 import defaultImage from '../Image/sen.jpg';
