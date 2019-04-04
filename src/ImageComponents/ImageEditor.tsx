@@ -74,10 +74,9 @@ export default function imageEditor () {
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
       let guitarBounds = document.querySelector('#ing');
       let bounds = guitarBounds.getBoundingClientRect();
-      console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
-      setWidth(bounds.width);
-      setHeight(bounds.height);
-      setAllPix(bounds.width * bounds.height);
+      setWidth(parseInt(bounds.width.toFixed(0)));
+      setHeight(parseInt(bounds.height.toFixed(0)));
+      setAllPix(parseInt(bounds.width.toFixed(0)) * parseInt(bounds.height.toFixed(0)));
       return {width, height, allPix}
   }
   function fileHandler (e: any) {
