@@ -36,9 +36,9 @@ export default function imageEditor () {
   const [sepia, setSepia] = useState(0);
   const [grayscale, setGrayscale] = useState(0);
   const [rotation, setRotation] = useState(0);
-  const [width, setWidth] = useState('0');
-  const [height, setHeight] = useState('0');
-  const [allPix, setAllPix] = useState('0');
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [allPix, setAllPix] = useState(0);
   const [color, setColor] = useState('#1de9b6');
   const [name, setName] = useState('Franek!');
   const [image, setImage] = useState(defaultImage);
@@ -71,14 +71,15 @@ export default function imageEditor () {
     setRotation(rotation);
     return rotation
   }
-  // function onBoundsElement (e: any) {
-  //     let guitarBounds = document.querySelector('.imgStyle');
-  //     let bounds = guitarBounds.getBoundingClientRect();
-  //     console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
-  //     setWidth(bounds.width.toFixed(0));
-  //     setHeight(bounds.height.toFixed(0));
-  //     setAllPix(bounds.width.toFixed(0) * bounds.height.toFixed(0));  
-  // }
+  function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
+      let guitarBounds = document.querySelector('#ing');
+      let bounds = guitarBounds.getBoundingClientRect();
+      console.log( bounds.width + ' width' + ' i ' + bounds.height + ' height.');
+      setWidth(bounds.width);
+      setHeight(bounds.height);
+      setAllPix(bounds.width * bounds.height);
+      return {width, height, allPix}
+  }
   function fileHandler (e: any) {
     setImage(URL.createObjectURL(e.target.files[0])
     )
@@ -212,8 +213,7 @@ export default function imageEditor () {
           </div>
         </div>
         <div style={elementChangingStyle}>
-          {/* <img style={imgStyle} src={image}  className="imgStyle"  onClick={onBoundsElement} /> */}
-          <img style={imgStyle} src={image}  className="imgStyle" />
+          <img style={imgStyle} src={image}  className="imgStyle" id="ing" onClick={onBoundsElement} />
           <p className="colorStyle" style={colorStyle} > {name}</p>
           <div className="buttonImage">
             <input type="file" id="image" onChange={fileHandler} />
