@@ -68,6 +68,10 @@ export default function ImageEditor () {
   }
   function onRotation (e: any, rotation: number) {    
     setRotation(rotation);
+    if(rotation >= 1){
+      onBoundsElement(setAllPix);
+    }
+   
     return rotation
   }
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
