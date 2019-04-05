@@ -33,6 +33,7 @@ export default function ImageEditor () {
   const [saturate, setSaturate] = useState(1);
   const [sepia, setSepia] = useState(0);
   const [grayscale, setGrayscale] = useState(0);
+  const [hueRotate, setHueRotate] = useState(0);
   const [opacity, setOpacity] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [width, setWidth] = useState(0);
@@ -72,6 +73,10 @@ export default function ImageEditor () {
     setSepia(sepia);
     return sepia
   }
+  function onHueRotate (e: any, hueRotate: number) {    
+    setHueRotate(hueRotate);
+    return hueRotate
+  }
   function onRotation (e: any, rotation: number) {  
     setRotation(rotation);
     if(rotation >= 1){
@@ -93,7 +98,7 @@ export default function ImageEditor () {
   }
   const imgStyle = {
     transform: `rotate(${rotation}deg)`,
-    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity})`,
+    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity}) hue-rotate(${hueRotate}deg)`,
   }
   const container = {
     color: color,
@@ -207,6 +212,15 @@ export default function ImageEditor () {
           >
             <span style={colorStyle}>
               Invert {invert} {percent}
+            </span>
+          </ImageSlider>
+          <ImageSlider
+              max={360}
+              value={hueRotate}
+              onChange={onHueRotate}
+          >
+            <span style={colorStyle}>
+              Hue-rotate {hueRotate} {deg}
             </span>
           </ImageSlider>
           <ImageSlider
