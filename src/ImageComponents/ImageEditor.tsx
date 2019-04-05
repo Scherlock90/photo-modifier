@@ -28,6 +28,7 @@ const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
 
 export default function ImageEditor () {
   const [contrast, setContrast] = useState(1);
+  const [blur, setBlur] = useState(0);
   const [brightness, setBrightness] = useState(1);
   const [invert, setInvert] = useState(0);
   const [saturate, setSaturate] = useState(1);
@@ -44,7 +45,12 @@ export default function ImageEditor () {
   const [image, setImage] = useState(defaultImage);
   let deg = 'deg'; 
   let percent = '%'; 
+  let px = 'px';
 
+  function onBlur (e: any, blur: number) { 
+    setBlur(blur);
+    return blur
+  }
   function onOpacity (e: any, opacity: number) { 
     setOpacity(opacity);
     return opacity
@@ -98,7 +104,7 @@ export default function ImageEditor () {
   }
   const imgStyle = {
     transform: `rotate(${rotation}deg)`,
-    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity}) hue-rotate(${hueRotate}deg)`,
+    filter: `blur(${blur}px) sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity}) hue-rotate(${hueRotate}deg)`,
   }
   const container = {
     color: color,
@@ -167,6 +173,15 @@ export default function ImageEditor () {
           >
             <span style={colorStyle}>
               Brightness {brightness} {percent}
+            </span>
+          </ImageSlider>
+          <ImageSlider
+              max={100}
+              value={blur}
+              onChange={onBlur}
+          >
+            <span style={colorStyle}>
+              Blur {blur} {px}
             </span>
           </ImageSlider>
           <ImageSlider
