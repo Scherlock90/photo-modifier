@@ -33,6 +33,7 @@ export default function ImageEditor () {
   const [saturate, setSaturate] = useState(1);
   const [sepia, setSepia] = useState(0);
   const [grayscale, setGrayscale] = useState(0);
+  const [opacity, setOpacity] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -43,6 +44,10 @@ export default function ImageEditor () {
   let deg = 'deg'; 
   let percent = '%'; 
 
+  function onOpacity (e: any, opacity: number) { 
+    setOpacity(opacity);
+    return opacity
+  }
   function onBrightness (e: any, brightness: number) { 
     setBrightness(brightness);
     return brightness
@@ -88,7 +93,7 @@ export default function ImageEditor () {
   }
   const imgStyle = {
     transform: `rotate(${rotation}deg)`,
-    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness})`,
+    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity})`,
   }
   const container = {
     color: color,
@@ -141,6 +146,15 @@ export default function ImageEditor () {
         </div> 
       <div style={container}>
         <div className="settings">
+          <ImageSlider
+              max={1}
+              value={opacity}
+              onChange={onOpacity}
+          >
+            <span style={colorStyle}>
+              Opacity {opacity}
+            </span>
+          </ImageSlider>
           <ImageSlider
               max={100}
               value={brightness}
