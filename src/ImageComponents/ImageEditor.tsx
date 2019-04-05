@@ -70,8 +70,7 @@ export default function ImageEditor () {
     setRotation(rotation);
     if(rotation >= 1){
       onBoundsElement(setAllPix);
-    }
-   
+    }   
     return rotation
   }
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
@@ -85,6 +84,10 @@ export default function ImageEditor () {
   function fileHandler (e: any) {
     setImage(URL.createObjectURL(e.target.files[0])
     )
+  }
+  const imgStyle = {
+    transform: `rotate(${rotation}deg)`,
+    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness})`,
   }
   const container = {
     color: color,
@@ -113,10 +116,6 @@ export default function ImageEditor () {
     marginBlockStart: '0',
     padding: '1em',
     color: color,
-  }
-  const imgStyle = {
-    transform: `rotate(${rotation}deg)`,
-    filter: `sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness})`,
   }
   const colorStyle = {
     color: color,
