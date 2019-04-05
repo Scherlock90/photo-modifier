@@ -26,7 +26,6 @@ const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
     </>
 )
 
-
 export default function ImageEditor () {
   const [contrast, setContrast] = useState(1);
   const [brightness, setBrightness] = useState(1);
@@ -41,6 +40,8 @@ export default function ImageEditor () {
   const [color, setColor] = useState('#1de9b6');
   const [name, setName] = useState('Franek!');
   const [image, setImage] = useState(defaultImage);
+  let deg = 'deg'; 
+  let percent = '%'; 
 
   function onBrightness (e: any, brightness: number) { 
     setBrightness(brightness);
@@ -66,7 +67,7 @@ export default function ImageEditor () {
     setSepia(sepia);
     return sepia
   }
-  function onRotation (e: any, rotation: number) {    
+  function onRotation (e: any, rotation: number) {  
     setRotation(rotation);
     if(rotation >= 1){
       onBoundsElement(setAllPix);
@@ -146,7 +147,7 @@ export default function ImageEditor () {
               onChange={onBrightness}
           >
             <span style={colorStyle}>
-              Brightness {brightness}
+              Brightness {brightness} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
@@ -155,7 +156,7 @@ export default function ImageEditor () {
               onChange={onContrast}
           >
             <span style={colorStyle}>
-              Contrast {contrast}
+              Contrast {contrast} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
@@ -164,7 +165,7 @@ export default function ImageEditor () {
               onChange={onGrayscale}
           >
             <span style={colorStyle}>
-              Grayscale {grayscale}
+              Grayscale {grayscale} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
@@ -173,7 +174,7 @@ export default function ImageEditor () {
               onChange={onSaturate}
           >
             <span style={colorStyle}>
-              Saturate {saturate}
+              Saturate {saturate} {percent}
             </span>
           </ImageSlider>          
           <ImageSlider
@@ -182,7 +183,7 @@ export default function ImageEditor () {
               onChange={onSepia}
           >
             <span style={colorStyle}>
-              Sepia {sepia}
+              Sepia {sepia} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
@@ -191,7 +192,7 @@ export default function ImageEditor () {
               onChange={onInvert}
           >
             <span style={colorStyle}>
-              Invert {invert}
+              Invert {invert} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
@@ -200,7 +201,7 @@ export default function ImageEditor () {
               onChange={onRotation}
           >
             <span style={colorStyle}>
-              Rotation {rotation}
+              Rotation {rotation} {deg}
             </span>
           </ImageSlider>
           <div className="buttonContainer">
