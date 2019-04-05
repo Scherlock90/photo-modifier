@@ -37,6 +37,8 @@ export default function ImageEditor () {
   const [hueRotate, setHueRotate] = useState(0);
   const [opacity, setOpacity] = useState(1);
   const [rotation, setRotation] = useState(0);
+  const [rotationX, setRotationX] = useState(0);
+  const [rotationY, setRotationY] = useState(0);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [allPix, setAllPix] = useState(0);
@@ -90,6 +92,20 @@ export default function ImageEditor () {
     }   
     return rotation
   }
+  function onRotationX (e: any, rotationX: number) {  
+    setRotationX(rotationX); 
+    if(rotationX >= 1){
+      onBoundsElement(setAllPix);
+    }   
+    return rotationX
+  }
+  function onRotationY (e: any, rotationY: number) {  
+    setRotationY(rotationY); 
+    if(rotationY >= 1){
+      onBoundsElement(setAllPix);
+    }   
+    return rotationY
+  }
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
       let guitarBounds = document.querySelector('.imgStyle');
       let bounds = guitarBounds.getBoundingClientRect();
@@ -103,7 +119,7 @@ export default function ImageEditor () {
     )
   }
   const imgStyle = {
-    transform: `rotate(${rotation}deg)`,
+    transform: `rotate(${rotation}deg) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
     filter: `blur(${blur}px) sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity}) hue-rotate(${hueRotate}deg)`,
   }
   const container = {
@@ -114,7 +130,7 @@ export default function ImageEditor () {
     gridTemplateRows: '80px 200px',
     gridGap: '200px',
     padding: '10px',
-    height: '650px',
+    height: '700px',
     backgroundColor: 'rgba(28,34,47,.5)'
   }
   const buttonStyle = {
@@ -139,7 +155,7 @@ export default function ImageEditor () {
   }
   const headerTitle = {
     color: color,
-    fontSize: '40px',
+    fontSize: '30px',
     padding: '1em 0 0 0'
   }
   const containerImage = {
@@ -247,14 +263,24 @@ export default function ImageEditor () {
               Rotation {rotation} {deg}
             </span>
           </ImageSlider>
-          <div className="buttonContainer">
-            <div className="buttonOnSettings">
-              <button style={buttonStyle} onClick={() => setName('Lucek')}>Change name</button>
-            </div>
-            <div className="buttonOnSettings">
-              <button style={buttonStyle} onClick={() => setColor('#00e5ff') }>Change color</button>
-            </div>
-          </div>
+          <ImageSlider
+              max={360}
+              value={rotationX}
+              onChange={onRotationX}
+          >
+            <span style={colorStyle}>
+              RotationX {rotationX} {deg}
+            </span>
+          </ImageSlider>
+          <ImageSlider
+              max={360}
+              value={rotationY}
+              onChange={onRotationY}
+          >
+            <span style={colorStyle}>
+              RotationY {rotationY} {deg}
+            </span>
+          </ImageSlider>
         </div>
         <div>
           <div style={containerImage}>
@@ -263,6 +289,12 @@ export default function ImageEditor () {
           <p className="colorStyle" style={colorStyle} > {name}</p>
           <div className="buttonImage">
             <input type="file" id="image" onChange={fileHandler} />
+          </div>
+          <div className="buttonOnSettings">
+              <button style={buttonStyle} onClick={() => setColor('#00e5ff') }>Change color</button>
+            </div>
+          <div className="buttonOnSettings">
+              <button style={buttonStyle} onClick={() => setName('Lucek')}>Change name</button>
           </div>
         </div>
         <div style={valueStyle}>
