@@ -114,7 +114,7 @@ export default function ImageEditor () {
     gridTemplateRows: '80px 200px',
     gridGap: '200px',
     padding: '10px',
-    height: '600px',
+    height: '650px',
     backgroundColor: 'rgba(28,34,47,.5)'
   }
   const buttonStyle = {
