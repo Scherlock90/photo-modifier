@@ -74,7 +74,7 @@ export default function ImageEditor () {
     return rotation
   }
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
-      let guitarBounds = document.querySelector('#ing');
+      let guitarBounds = document.querySelector('.imgStyle');
       let bounds = guitarBounds.getBoundingClientRect();
       setWidth(parseInt(bounds.width.toFixed(0)));
       setHeight(parseInt(bounds.height.toFixed(0)));
@@ -119,10 +119,6 @@ export default function ImageEditor () {
   }
   const colorStyle = {
     color: color,
-  }
-  const elementChangingStyle = {
-    maxWidth: '600px',
-    maxHeight: '600px'
   }
   const headerTitle = {
     color: color,
@@ -216,9 +212,9 @@ export default function ImageEditor () {
             </div>
           </div>
         </div>
-        <div style={elementChangingStyle}>
+        <div>
           <div style={containerImage}>
-            <img src={image} style={imgStyle} className="imgStyle" id="ing" onClick={onBoundsElement} />
+            <img src={image} style={imgStyle} className="imgStyle" onClick={onBoundsElement} />
           </div>          
           <p className="colorStyle" style={colorStyle} > {name}</p>
           <div className="buttonImage">
