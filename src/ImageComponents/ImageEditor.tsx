@@ -155,7 +155,7 @@ export default function ImageEditor () {
   }
   const headerTitle = {
     color: color,
-    fontSize: '30px',
+    fontSize: '40px',
     padding: '1em 0 0 0'
   }
   const containerImage = {
