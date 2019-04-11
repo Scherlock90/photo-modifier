@@ -1,17 +1,11 @@
-import React, { useState, SFC } from 'react';
+import React, { useState } from 'react';
 import './imageEditor.css';
 import logo from '../logo.svg';
 import defaultImage from '../Image/sen.jpg';
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/lab/Slider";
 
-interface Props {
-	value:number;
-	max:number;
-	onChange(e: any, value: number): void;
-}
-
-const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
+const ImageSlider = ({ value, max, onChange, children }) => (
     <>
       <Typography id="label">
         {children}
@@ -43,70 +37,69 @@ export default function ImageEditor () {
   const [height, setHeight] = useState(0);
   const [allPix, setAllPix] = useState(0);
   const [color, setColor] = useState('#1de9b6');
-  const [name, setName] = useState('Franek!');
   const [image, setImage] = useState(defaultImage);
   let deg = 'deg'; 
   let percent = '%'; 
   let px = 'px';
 
-  function onBlur (e: any, blur: number) { 
+  function onBlur (e, blur) { 
     setBlur(blur);
     return blur
   }
-  function onOpacity (e: any, opacity: number) { 
+  function onOpacity (e, opacity) { 
     setOpacity(opacity);
     return opacity
   }
-  function onBrightness (e: any, brightness: number) { 
+  function onBrightness (e, brightness) { 
     setBrightness(brightness);
     return brightness
   }
-  function onGrayscale (e: any, grayscale: number) {    
+  function onGrayscale (e, grayscale) {    
     setGrayscale(grayscale);
     return grayscale
   }
-  function onContrast (e: any, contrast: number) {    
+  function onContrast (e, contrast) {    
     setContrast(contrast);
     return contrast
   }
-  function onInvert (e: any, invert: number) {    
+  function onInvert (e, invert) {    
     setInvert(invert);
     return invert
   }
-  function onSaturate (e: any, saturate: number) {    
+  function onSaturate (e, saturate) {    
     setSaturate(saturate);
     return saturate
   }
-  function onSepia (e: any, sepia: number) {    
+  function onSepia (e, sepia) {    
     setSepia(sepia);
     return sepia
   }
-  function onHueRotate (e: any, hueRotate: number) {    
+  function onHueRotate (e, hueRotate) {    
     setHueRotate(hueRotate);
     return hueRotate
   }
-  function onRotation (e: any, rotation: number) {  
+  function onRotation (e, rotation) {  
     setRotation(rotation);
     if(rotation >= 1){
       onBoundsElement(setAllPix);
     }   
     return rotation
   }
-  function onRotationX (e: any, rotationX: number) {  
+  function onRotationX (e, rotationX) {  
     setRotationX(rotationX); 
     if(rotationX >= 1){
       onBoundsElement(setAllPix);
     }   
     return rotationX
   }
-  function onRotationY (e: any, rotationY: number) {  
+  function onRotationY (e, rotationY) {  
     setRotationY(rotationY); 
     if(rotationY >= 1){
       onBoundsElement(setAllPix);
     }   
     return rotationY
   }
-  function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
+  function onBoundsElement(e){
       let guitarBounds = document.querySelector('.imgStyle');
       let bounds = guitarBounds.getBoundingClientRect();
       setWidth(parseInt(bounds.width.toFixed(0)));
@@ -114,7 +107,7 @@ export default function ImageEditor () {
       setAllPix(parseInt(bounds.width.toFixed(0)) * parseInt(bounds.height.toFixed(0)));
       return {width, height, allPix}
   }
-  function fileHandler (e: any) {
+  function fileHandler (e) {
     setImage(URL.createObjectURL(e.target.files[0])
     )
   }
@@ -137,6 +130,7 @@ export default function ImageEditor () {
     cursor: 'pointer'
   }
   const valueStyle = {
+    padding: '50% 0 50% 0',
     width: '232px',
     maxHeight: '1000px',
     height: '300px',
@@ -163,14 +157,6 @@ export default function ImageEditor () {
   }
   return (
       <div>
-        <div style={headerTitle}>
-          React Photo-Modifier <br/> with Hooks
-        </div>  
-        <div>
-          <span>
-            <img src={logo} className="App-logo" alt="logo" />
-          </span>   
-        </div> 
       <div style={container}>
         <div className="settings">
           <ImageSlider
@@ -284,23 +270,27 @@ export default function ImageEditor () {
         </div>
         <div>
           <div style={containerImage}>
+            <div style={headerTitle}>
+              React Photo-Modifier <br/> with Hooks
+            </div>  
+            <div>
+              <span>
+                <img src={logo} className="App-logo" alt="logo" />
+              </span>   
+            </div>          
             <img src={image} style={imgStyle} className="imgStyle" onClick={onBoundsElement} />
-          </div>          
-          <p className="colorStyle" style={colorStyle} > {name}</p>
+          </div> 
+        </div>
+        <div style={valueStyle} className="valueStyle2">
+          <p style={parametersStyle}>Width: {width} px</p>
+          <p style={parametersStyle}>Height: {height} px</p>
+          <p style={parametersStyle}>Size: {allPix} px</p>
           <div className="buttonImage">
             <input type="file" id="image" onChange={fileHandler} />
           </div>
           <div className="buttonOnSettings">
               <button style={buttonStyle} onClick={() => setColor('#00e5ff') }>Change color</button>
             </div>
-          <div className="buttonOnSettings">
-              <button style={buttonStyle} onClick={() => setName('Lucek')}>Change name</button>
-          </div>
-        </div>
-        <div style={valueStyle}>
-          <p style={parametersStyle}>Width: {width} px</p>
-          <p style={parametersStyle}>Height: {height} px</p>
-          <p style={parametersStyle}>Size: {allPix} px</p>
           <div className="buttonImage">
             <button onClick={onBoundsElement} className="cursorPointer" type="button"  >Value of Height/Width/Size"</button>
           </div>
