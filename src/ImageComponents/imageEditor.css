@@ -24,7 +24,6 @@
     padding: 1em;
 }
 .buttonOnSettings{
-    margin: 5px;
     padding: 1em;
     text-align: left;
 }
@@ -33,5 +32,8 @@
 }
 .buttonImage{
     padding: 1em;
-    text-align: center;
+    text-align: left;
+}
+.valueStyle2{
+    text-align: left;
 }

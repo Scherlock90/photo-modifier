@@ -1,9 +1,13 @@
 .App {
   text-align: center;
   height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
+  padding: 1em;
   animation: App-logo-spin infinite 20s linear;
   height: 5vmin;
   pointer-events: none;

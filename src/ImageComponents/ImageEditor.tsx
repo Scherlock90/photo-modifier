@@ -43,7 +43,6 @@ export default function ImageEditor () {
   const [height, setHeight] = useState(0);
   const [allPix, setAllPix] = useState(0);
   const [color, setColor] = useState('#1de9b6');
-  const [name, setName] = useState('Franek!');
   const [image, setImage] = useState(defaultImage);
   let deg = 'deg'; 
   let percent = '%'; 
@@ -137,6 +136,7 @@ export default function ImageEditor () {
     cursor: 'pointer'
   }
   const valueStyle = {
+    padding: '50% 0 50% 0',
     width: '232px',
     maxHeight: '1000px',
     height: '300px',
@@ -163,15 +163,7 @@ export default function ImageEditor () {
   }
   return (
       <div>
-        <div style={headerTitle}>
-          React Photo-Modifier <br/> with Hooks
-        </div>  
-        <div>
-          <span>
-            <img src={logo} className="App-logo" alt="logo" />
-          </span>   
-        </div> 
-      <div style={container}>
+      <div style={container} >
         <div className="settings">
           <ImageSlider
               max={1}
@@ -284,23 +276,28 @@ export default function ImageEditor () {
         </div>
         <div>
           <div style={containerImage}>
+            <div style={headerTitle}>
+              React Photo-Modifier <br/> with Hooks
+            </div>  
+            <div>
+              <span>
+                <img src={logo} className="App-logo" alt="logo" />
+              </span>   
+            </div> 
             <img src={image} style={imgStyle} className="imgStyle" onClick={onBoundsElement} />
           </div>          
-          <p className="colorStyle" style={colorStyle} > {name}</p>
+          
+        </div>
+        <div style={valueStyle} className="valueStyle2" >
+          <p style={parametersStyle}>Width: {width} px</p>
+          <p style={parametersStyle}>Height: {height} px</p>
+          <p style={parametersStyle}>Size: {allPix} px</p>
           <div className="buttonImage">
             <input type="file" id="image" onChange={fileHandler} />
           </div>
           <div className="buttonOnSettings">
               <button style={buttonStyle} onClick={() => setColor('#00e5ff') }>Change color</button>
             </div>
-          <div className="buttonOnSettings">
-              <button style={buttonStyle} onClick={() => setName('Lucek')}>Change name</button>
-          </div>
-        </div>
-        <div style={valueStyle}>
-          <p style={parametersStyle}>Width: {width} px</p>
-          <p style={parametersStyle}>Height: {height} px</p>
-          <p style={parametersStyle}>Size: {allPix} px</p>
           <div className="buttonImage">
             <button onClick={onBoundsElement} className="cursorPointer" type="button"  >Value of Height/Width/Size"</button>
           </div>
