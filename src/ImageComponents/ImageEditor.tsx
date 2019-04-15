@@ -4,6 +4,7 @@ import logo from '../logo.svg';
 import defaultImage from '../Image/sen.jpg';
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/lab/Slider";
+import Footer from '../Footer';
 
 interface Props {
 	value:number;
@@ -303,6 +304,7 @@ export default function ImageEditor () {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )  
 }
