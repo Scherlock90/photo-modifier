@@ -1,0 +1,104 @@
+/* index css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+/* App css */
+.App {
+    text-align: center;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .App-logo {
+    padding: 1em;
+    animation: App-logo-spin infinite 20s linear;
+    height: 5vmin;
+    pointer-events: none;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  #root{
+        font-family: "Lato";
+      display: flex;
+      font-weight: 300;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      -webkit-box-align: center;
+      -webkit-box-pack: center;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #171919;
+    background:-webkit-linear-gradient(top, #6589b1 0%, #32393c 100%);
+  }
+
+
+
+/* ImageEditor css */
+.MuiTypography-root-1{
+    padding: 1em;
+}
+.MuiTypography-body1-10{
+    color: #1de9b6 !important;
+}
+.settings {
+    display: grid;
+    height: 535px;
+    width: 200px;
+    padding: 2em;
+    border-radius: 5%;
+}
+.imgStyle{
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+.nameStyle{
+    height: 20px;
+    border-radius: 5%;
+}
+.buttonContainer{
+    padding: 1em;
+}
+.buttonOnSettings{
+    padding: 1em;
+    text-align: left;
+}
+.cursorPointer{
+    cursor: pointer;
+}
+.buttonImage{
+    padding: 1em;
+    text-align: left;
+}
+.valueStyle2{
+    text-align: left;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageEditor from './ImageComponents/ImageEditor';
-import './App.css';
+import ImageEditor from './components/ImageEditor';
+import './styles/main.css';
 
 
 const AppTsx: React.SFC = () => {

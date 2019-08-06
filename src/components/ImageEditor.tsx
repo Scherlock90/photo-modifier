@@ -1,33 +1,32 @@
 import React, { useState, SFC } from 'react';
-import './imageEditor.css';
-import logo from '../logo.svg';
-import defaultImage from '../Image/sen.jpg';
+import logo from '../assets/logo.svg';
+import defaultImage from '../assets/sen.jpg';
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/lab/Slider";
-import Footer from '../Footer';
+import Footer from './Footer';
 
 interface Props {
-	value:number;
-	max:number;
-	onChange(e: any, value: number): void;
+  value: number;
+  max: number;
+  onChange(e: any, value: number): void;
 }
 
 const ImageSlider: SFC<Props> = ({ value, max, onChange, children }) => (
-    <>
-      <Typography id="label">
-        {children}
-      </Typography>
-      <Slider
-        min={0}
-        max={max}
-        value={value}
-        step={1}
-        onChange={onChange}
-      />
-    </>
+  <>
+    <Typography id="label">
+      {children}
+    </Typography>
+    <Slider
+      min={0}
+      max={max}
+      value={value}
+      step={1}
+      onChange={onChange}
+    />
+  </>
 )
 
-export default function ImageEditor () {
+export default function ImageEditor() {
   const [contrast, setContrast] = useState(1);
   const [blur, setBlur] = useState(0);
   const [brightness, setBrightness] = useState(1);
@@ -45,82 +44,110 @@ export default function ImageEditor () {
   const [allPix, setAllPix] = useState(0);
   const [color, setColor] = useState('#1de9b6');
   const [image, setImage] = useState(defaultImage);
-  let deg = 'deg'; 
-  let percent = '%'; 
+  let deg = 'deg';
+  let percent = '%';
   let px = 'px';
 
-  function onBlur (e: any, blur: number) { 
+  function onBlur(e: any, blur: number) {
     setBlur(blur);
     return blur
   }
-  function onOpacity (e: any, opacity: number) { 
+
+  function onOpacity(e: any, opacity: number) {
     setOpacity(opacity);
     return opacity
   }
-  function onBrightness (e: any, brightness: number) { 
+
+  function onBrightness(e: any, brightness: number) {
     setBrightness(brightness);
     return brightness
   }
-  function onGrayscale (e: any, grayscale: number) {    
+
+  function onGrayscale(e: any, grayscale: number) {
     setGrayscale(grayscale);
     return grayscale
   }
-  function onContrast (e: any, contrast: number) {    
+
+  function onContrast(e: any, contrast: number) {
     setContrast(contrast);
     return contrast
   }
-  function onInvert (e: any, invert: number) {    
+
+  function onInvert(e: any, invert: number) {
     setInvert(invert);
     return invert
   }
-  function onSaturate (e: any, saturate: number) {    
+
+  function onSaturate(e: any, saturate: number) {
     setSaturate(saturate);
     return saturate
   }
-  function onSepia (e: any, sepia: number) {    
+
+  function onSepia(e: any, sepia: number) {
     setSepia(sepia);
     return sepia
   }
-  function onHueRotate (e: any, hueRotate: number) {    
+
+  function onHueRotate(e: any, hueRotate: number) {
     setHueRotate(hueRotate);
     return hueRotate
   }
-  function onRotation (e: any, rotation: number) {  
+
+  function onRotation(e: any, rotation: number) {
     setRotation(rotation);
-    if(rotation >= 1){
+    if (rotation >= 1) {
       onBoundsElement(setAllPix);
-    }   
+    }
     return rotation
   }
-  function onRotationX (e: any, rotationX: number) {  
-    setRotationX(rotationX); 
-    if(rotationX >= 1){
+
+  function onRotationX(e: any, rotationX: number) {
+    setRotationX(rotationX);
+    if (rotationX >= 1) {
       onBoundsElement(setAllPix);
-    }   
+    }
     return rotationX
   }
-  function onRotationY (e: any, rotationY: number) {  
-    setRotationY(rotationY); 
-    if(rotationY >= 1){
+
+  function onRotationY(e: any, rotationY: number) {
+    setRotationY(rotationY);
+    if (rotationY >= 1) {
       onBoundsElement(setAllPix);
-    }   
+    }
     return rotationY
   }
+
   function onBoundsElement(e: any): { width: number; height: number; allPix: number } {
-      let guitarBounds = document.querySelector('.imgStyle');
-      let bounds = guitarBounds.getBoundingClientRect();
-      setWidth(parseInt(bounds.width.toFixed(0)));
-      setHeight(parseInt(bounds.height.toFixed(0)));
-      setAllPix(parseInt(bounds.width.toFixed(0)) * parseInt(bounds.height.toFixed(0)));
-      return {width, height, allPix}
+    let guitarBounds = document.querySelector('.imgStyle');
+    let bounds = guitarBounds.getBoundingClientRect();
+    setWidth(parseInt(bounds.width.toFixed(0)));
+    setHeight(parseInt(bounds.height.toFixed(0)));
+    setAllPix(parseInt(bounds.width.toFixed(0)) * parseInt(bounds.height.toFixed(0)));
+    return { width, height, allPix }
   }
-  function fileHandler (e: any) {
+
+  function fileHandler(e: any) {
     setImage(URL.createObjectURL(e.target.files[0])
     )
   }
+
   const imgStyle = {
-    transform: `rotate(${rotation}deg) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
-    filter: `blur(${blur}px) sepia(${sepia}) grayscale(${grayscale}) saturate(${saturate}) invert(${invert}) contrast(${contrast}) brightness(${brightness}) opacity(${opacity}) hue-rotate(${hueRotate}deg)`,
+    transform: `
+      rotate(${rotation}deg) 
+      rotateX(${rotationX}deg) 
+      rotateY(${rotationY}deg)
+    `,
+    filter: `
+      blur(${blur}px) 
+      sepia(${sepia}) 
+      grayscale(${grayscale})
+      saturate(${saturate}) 
+      invert(${invert}) 
+      contrast(${contrast}) 
+      brightness(${brightness}) 
+      opacity(${opacity}) 
+      hue-rotate(${hueRotate}deg)
+    `,
   }
   const container = {
     color: color,
@@ -128,7 +155,6 @@ export default function ImageEditor () {
     display: 'grid',
     gridTemplateColumns: 'auto auto auto',
     gridTemplateRows: '80px 200px',
-    gridGap: '200px',
     padding: '10px',
     height: '650px',
     backgroundColor: 'rgba(28,34,47,.5)'
@@ -163,112 +189,112 @@ export default function ImageEditor () {
     padding: '3.5em 0 3.5em 0'
   }
   return (
-      <div>
+    <div>
       <div style={container} >
         <div className="settings">
           <ImageSlider
-              max={1}
-              value={opacity}
-              onChange={onOpacity}
+            max={1}
+            value={opacity}
+            onChange={onOpacity}
           >
             <span style={colorStyle}>
               Opacity {opacity}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={brightness}
-              onChange={onBrightness}
+            max={100}
+            value={brightness}
+            onChange={onBrightness}
           >
             <span style={colorStyle}>
               Brightness {brightness} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={blur}
-              onChange={onBlur}
+            max={100}
+            value={blur}
+            onChange={onBlur}
           >
             <span style={colorStyle}>
               Blur {blur} {px}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={contrast}
-              onChange={onContrast}
+            max={100}
+            value={contrast}
+            onChange={onContrast}
           >
             <span style={colorStyle}>
               Contrast {contrast} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={grayscale}
-              onChange={onGrayscale}
+            max={100}
+            value={grayscale}
+            onChange={onGrayscale}
           >
             <span style={colorStyle}>
               Grayscale {grayscale} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={saturate}
-              onChange={onSaturate}
+            max={100}
+            value={saturate}
+            onChange={onSaturate}
           >
             <span style={colorStyle}>
               Saturate {saturate} {percent}
             </span>
-          </ImageSlider>          
+          </ImageSlider>
           <ImageSlider
-              max={100}
-              value={sepia}
-              onChange={onSepia}
+            max={100}
+            value={sepia}
+            onChange={onSepia}
           >
             <span style={colorStyle}>
               Sepia {sepia} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={100}
-              value={invert}
-              onChange={onInvert}
+            max={100}
+            value={invert}
+            onChange={onInvert}
           >
             <span style={colorStyle}>
               Invert {invert} {percent}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={360}
-              value={hueRotate}
-              onChange={onHueRotate}
+            max={360}
+            value={hueRotate}
+            onChange={onHueRotate}
           >
             <span style={colorStyle}>
               Hue-rotate {hueRotate} {deg}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={360}
-              value={rotation}
-              onChange={onRotation}
+            max={360}
+            value={rotation}
+            onChange={onRotation}
           >
             <span style={colorStyle}>
               Rotation {rotation} {deg}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={360}
-              value={rotationX}
-              onChange={onRotationX}
+            max={360}
+            value={rotationX}
+            onChange={onRotationX}
           >
             <span style={colorStyle}>
               RotationX {rotationX} {deg}
             </span>
           </ImageSlider>
           <ImageSlider
-              max={360}
-              value={rotationY}
-              onChange={onRotationY}
+            max={360}
+            value={rotationY}
+            onChange={onRotationY}
           >
             <span style={colorStyle}>
               RotationY {rotationY} {deg}
@@ -278,33 +304,66 @@ export default function ImageEditor () {
         <div>
           <div style={containerImage}>
             <div style={headerTitle}>
-              React Photo-Modifier <br/> with Hooks
-            </div>  
+              React Photo-Modifier <br /> with Hooks
+            </div>
             <div>
               <span>
-                <img src={logo} className="App-logo" alt="logo" />
-              </span>   
-            </div> 
-            <img src={image} style={imgStyle} className="imgStyle" onClick={onBoundsElement} />
-          </div>          
-          
+                <img 
+                  src={logo} 
+                  className="App-logo"
+                  alt="logo" 
+                />
+              </span>
+            </div>
+            <img 
+              src={image} 
+              style={imgStyle} 
+              className="imgStyle" 
+              onClick={onBoundsElement} 
+            />
+          </div>
+
         </div>
-        <div style={valueStyle} className="valueStyle2" >
-          <p style={parametersStyle}>Width: {width} px</p>
-          <p style={parametersStyle}>Height: {height} px</p>
-          <p style={parametersStyle}>Size: {allPix} px</p>
+        <div 
+          style={valueStyle} 
+          className="valueStyle2" 
+        >
+          <p style={parametersStyle}>
+            Width: {width} px
+          </p>
+          <p style={parametersStyle}>
+            Height: {height} px
+          </p>
+          <p style={parametersStyle}>
+            Size: {allPix} px
+          </p>
           <div className="buttonImage">
-            <input type="file" id="image" onChange={fileHandler} />
+            <input 
+              type="file" 
+              id="image" 
+              onChange={fileHandler} 
+            />
           </div>
           <div className="buttonOnSettings">
-              <button style={buttonStyle} onClick={() => setColor('#00e5ff') }>Change color</button>
-            </div>
+            <button 
+              style={buttonStyle} 
+              onClick={() => setColor('#00e5ff')}
+            >
+              Change color
+            </button>
+          </div>
           <div className="buttonImage">
-            <button onClick={onBoundsElement} className="cursorPointer" type="button"  >Value of Height/Width/Size"</button>
+            <button 
+              onClick={onBoundsElement} 
+              className="cursorPointer" 
+              type="button"  
+            >
+              Value of Height/Width/Size"
+            </button>
           </div>
         </div>
       </div>
       <Footer />
     </div>
-  )  
+  )
 }
