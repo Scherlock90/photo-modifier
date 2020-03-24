@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import defaultImage from '../../assets/images/sen.jpg';
+import defaultImage from '../assets/images/sen.jpg';
 
-export const Logic = () => {
+export const ImageEditorServices = () => {
 
   const [contrast, setContrast] = useState(1)
   const [blur, setBlur] = useState(0)

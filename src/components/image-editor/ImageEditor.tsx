@@ -1,7 +1,8 @@
 import React from 'react';
+import { ImageEditorServices } from '../../services/ImageEditorServices'
 import { Footer } from '../footer/Footer';
 import { ImageSlider } from './image-slider/ImageSlider'
-import { Button, Parameters, ContainerImage, Logic } from './index'
+import { Button, Parameters, ContainerImage } from './index'
 import logo from '../../assets/images/logo.svg';
 
 export default function ImageEditor() {
@@ -39,7 +40,7 @@ export default function ImageEditor() {
     onInvert,
     onSaturate,
     setColor,
-  } = Logic()
+  } = ImageEditorServices()
 
   const imgStyle = {
     transform: `
