@@ -5,5 +5,4 @@ interface IProps {
     value: number
 }
 
-export const Parameters: SFC<IProps> = ({ name, value }): JSX.Element => 
-    <p className="parameters-style">{ name }: { value } px</p>
+export const Parameters: SFC<IProps> = ({ name, value }): JSX.Element => <p className="parameters-style">{ name }: { value } px</p>

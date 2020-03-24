@@ -5,6 +5,7 @@ import { Button, Parameters, ContainerImage, Logic } from './index'
 import logo from '../../assets/images/logo.svg';
 
 export default function ImageEditor() {
+
   const {
     rotation,
     rotationX,
