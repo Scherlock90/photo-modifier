@@ -64,38 +64,122 @@ export const ImageEditorServices = () => {
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => 
     setImage(URL.createObjectURL(e.target.files[0]))
 
+  const imgStyle = {
+    transform: `
+      rotate(${rotation}deg) 
+      rotateX(${rotationX}deg) 
+      rotateY(${rotationY}deg)
+    `,
+    filter: `
+      blur(${blur}px) 
+      sepia(${sepia}) 
+      grayscale(${grayscale})
+      saturate(${saturate}) 
+      invert(${invert}) 
+      contrast(${contrast}) 
+      brightness(${brightness}) 
+      opacity(${opacity}) 
+      hue-rotate(${hueRotate}deg)
+    `,
+  }
+
+  const jsxArray = [
+    {
+      index: "Opacity",
+      value: opacity,
+      max: 1,
+      setFunction: onOpacity,
+      rest: ''
+    },
+    {
+      index: "Brightness",
+      value: brightness,
+      max: 100,
+      setFunction: onBrightness,
+      rest: '%'
+    },
+    {
+      index: "Blur",
+      value: blur,
+      max: 100,
+      setFunction: onBlur,
+      rest: 'px'
+    },
+    {
+      index: "Contrast",
+      value: contrast,
+      max: 100,
+      setFunction: onContrast,
+      rest: '%'
+    },
+    {
+      index: "Grayscale",
+      value: grayscale,
+      max: 100,
+      setFunction: onGrayscale,
+      rest: '%'
+    },
+    {
+      index: "Saturate",
+      value: saturate,
+      max: 100,
+      setFunction: onSaturate,
+      rest: '%'
+    },
+    {
+      index: "Sepia",
+      value: sepia,
+      max: 100,
+      setFunction: onSepia,
+      rest: '%'
+    },
+    {
+      index: "Invert",
+      value: invert,
+      max: 100,
+      setFunction: onInvert,
+      rest: '%'
+    },
+    {
+      index: "Hue-rotate",
+      value: hueRotate,
+      max: 360,
+      setFunction: onHueRotate,
+      rest: 'deg'
+    },
+    {
+      index: "Rotation",
+      value: rotation,
+      max: 360,
+      setFunction: onRotation,
+      rest: 'deg'
+    },
+    {
+      index: "RotationX",
+      value: rotationX,
+      max: 360,
+      setFunction: onRotationX,
+      rest: 'deg'
+    },
+    {
+      index: "RotationY",
+      value: rotationY,
+      max: 360,
+      setFunction: onRotationY,
+      rest: 'deg'
+    },
+  ]
+
   return {
-    rotation,
-    rotationX,
-    rotationY,
-    sepia,
-    grayscale,
-    saturate,
-    invert,
-    contrast,
-    brightness,
-    opacity,
-    hueRotate,
     fontColor,
     image,
-    blur,
     width,
     height,
     allPix,
+    imgStyle,
+    jsxArray,
     fileHandler,
-    onOpacity,
-    onRotationY,
-    onRotationX,
-    onRotation,
     onBoundsElement,
-    onHueRotate,
-    onSepia,
-    onBrightness,
-    onBlur,
-    onGrayscale,
-    onContrast,
-    onInvert,
-    onSaturate,
     setColor,
   }
 }
