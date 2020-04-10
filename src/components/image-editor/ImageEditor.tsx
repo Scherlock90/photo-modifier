@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageEditorServices } from '../../services/ImageEditorServices'
+import { ImageEditorServices } from './logic/ImageEditorLogic'
 import { Footer } from '../footer/Footer';
 import { ImageSlider } from './image-slider/ImageSlider'
 import { Button, Parameters, ContainerImage } from './index'
