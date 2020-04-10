@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import defaultImage from '../assets/images/sen.jpg';
+import defaultImage from '../../../assets/images/sen.jpg';
 
 export const ImageEditorServices = () => {
 
