@@ -60,7 +60,7 @@ export default function ImageEditor() {
           <Parameters name={'Height'} value={height} />
           <Parameters name={'Size'} value={allPix} />
           <div className="input-image">
-            <input type="file" id="image" onChange={fileHandler} />
+            <input type="file" id="image" className="custom-input" onChange={fileHandler} />
           </div>
           <Button
             className={"button-on-settings"}
