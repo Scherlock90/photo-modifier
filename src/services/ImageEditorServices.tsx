@@ -21,64 +21,60 @@ export const ImageEditorServices = () => {
   const [fontColor, setColor] = useState('#1de9b6')
   const [image, setImage] = useState(defaultImage)
 
-  const onBlur = (e: any, blur: number) => setBlur(blur)
-  const onOpacity =(e: any, opacity: number) => setOpacity(opacity)
-  const onBrightness = (e: any, brightness: number) => setBrightness(brightness)
-  const onGrayscale = (e: any, grayscale: number) => setGrayscale(grayscale)
-  const onContrast =(e: any, contrast: number) => setContrast(contrast)
-  const onInvert = (e: any, invert: number) => setInvert(invert)
-  const onSaturate = (e: any, saturate: number) => setSaturate(saturate)
-  const onSepia = (e: any, sepia: number) => setSepia(sepia)
-  const onHueRotate = (e: any, hueRotate: number) => setHueRotate(hueRotate)
+  const onBlur = (e: React.ChangeEvent, blur: number) => setBlur(blur)
+  const onOpacity = (e: React.ChangeEvent, opacity: number) => setOpacity(opacity)
+  const onBrightness = (e: React.ChangeEvent, brightness: number) => setBrightness(brightness)
+  const onGrayscale = (e: React.ChangeEvent, grayscale: number) => setGrayscale(grayscale)
+  const onContrast = (e: React.ChangeEvent, contrast: number) => setContrast(contrast)
+  const onInvert = (e: React.ChangeEvent, invert: number) => setInvert(invert)
+  const onSaturate = (e: React.ChangeEvent, saturate: number) => setSaturate(saturate)
+  const onSepia = (e: React.ChangeEvent, sepia: number) => setSepia(sepia)
+  const onHueRotate = (e: React.ChangeEvent, hueRotate: number) => setHueRotate(hueRotate)
 
-  const onBoundsElement = (setState?: Function): { width: number; height: number; allPix: number } => {
+  const onBoundsElement = (): { width: number; height: number; allPix: number } => {
     let guitarBounds = document.querySelector('.img-design');
     let bounds = guitarBounds.getBoundingClientRect();
+
     setWidth(parseInt(bounds.width.toFixed(0)));
     setHeight(parseInt(bounds.height.toFixed(0)));
     setAllPix(parseInt(bounds.width.toFixed(0)) * parseInt(bounds.height.toFixed(0)));
+
     return { width, height, allPix }
   }
 
-  const onRotation = (e: any, rotation: number) => {
+  const onRotation = (e: React.ChangeEvent, rotation: number) => {
     setRotation(rotation);
-    if (rotation >= 1) {
-      onBoundsElement(setAllPix);
-    }
+    if (rotation >= 1) return onBoundsElement();
   }
 
-  const onRotationX = (e: any, rotationX: number) => {
+  const onRotationX = (e: React.ChangeEvent, rotationX: number) => {
     setRotationX(rotationX);
-    if (rotationX >= 1) {
-      onBoundsElement(setAllPix);
-    }
+    if (rotationX >= 1) return onBoundsElement();
   }
 
-  const onRotationY = (e: any, rotationY: number) => {
+  const onRotationY = (e: React.ChangeEvent, rotationY: number) => {
     setRotationY(rotationY);
-    if (rotationY >= 1) {
-      onBoundsElement(setAllPix);
-    }
+    if (rotationY >= 1) return onBoundsElement();
   }
 
-  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => 
+  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setImage(URL.createObjectURL(e.target.files[0]))
 
   const imgStyle = {
     transform: `
-      rotate(${rotation}deg) 
-      rotateX(${rotationX}deg) 
+      rotate(${rotation}deg)
+      rotateX(${rotationX}deg)
       rotateY(${rotationY}deg)
     `,
     filter: `
-      blur(${blur}px) 
-      sepia(${sepia}) 
+      blur(${blur}px)
+      sepia(${sepia})
       grayscale(${grayscale})
-      saturate(${saturate}) 
-      invert(${invert}) 
-      contrast(${contrast}) 
-      brightness(${brightness}) 
-      opacity(${opacity}) 
+      saturate(${saturate})
+      invert(${invert})
+      contrast(${contrast})
+      brightness(${brightness})
+      opacity(${opacity})
       hue-rotate(${hueRotate}deg)
     `,
   }

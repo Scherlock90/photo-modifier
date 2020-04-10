@@ -25,15 +25,15 @@ export default function ImageEditor() {
       <div className="container" >
         <div className="settings">
           {
-            jsxArray.map(items => 
+            jsxArray.map(({ index, max, value, setFunction, rest }) =>
               <ImageSlider
-                key={items.index}
-                max={items.max}
-                value={items.value}
-                onChange={items.setFunction}
+                key={index}
+                max={max}
+                value={value}
+                onChange={setFunction}
               >
                 <span style={{ color: `${fontColor}` }}>
-                  {items.index}: {items.value} {items.rest}
+                  {index}: {value} {rest}
                 </span>
               </ImageSlider>
             )
